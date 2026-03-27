@@ -62,23 +62,40 @@ export default function IntroScene({ onComplete }: IntroSceneProps) {
             transition={{ delay: 0.3, ...ENTER_SMOOTH }}
           >
             <img
-              className="w-full h-full object-cover rounded-xl border-2 border-on-background/20 shadow-xl"
+              className="w-full h-full object-contain"
               alt="Tarot card"
               src={TAROT_CARD}
             />
           </motion.div>
 
-          {/* Celestial Orb — top right */}
+          {/* Floating Star */}
           <motion.div
             layout={false}
-            className="absolute top-[16%] right-[8%] w-28 h-28 md:w-44 md:h-44 drop-shadow-2xl"
+            className="absolute top-[20%] right-[15%] text-primary"
+            style={{ willChange: 'transform, opacity', rotate: 12 }}
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 0.8, scale: 1.5 }}
+            transition={{ delay: 0.36, ...ENTER_SMOOTH }}
+          >
+            <span
+              className="material-symbols-outlined !text-6xl"
+              style={{ fontVariationSettings: "'FILL' 1", filter: 'drop-shadow(0 0 15px rgba(46,91,255,0.5))' }}
+            >
+              star
+            </span>
+          </motion.div>
+
+          {/* Celestial Orb — bottom left */}
+          <motion.div
+            layout={false}
+            className="absolute bottom-[22%] left-[10%] w-28 h-28 md:w-44 md:h-44 drop-shadow-2xl"
             style={{ willChange: 'transform, opacity' }}
             initial={{ opacity: 0, scale: 0.6 }}
             animate={{ opacity: 0.85, scale: 1 }}
-            transition={{ delay: 0.36, ...ENTER_SMOOTH }}
+            transition={{ delay: 0.42, ...ENTER_SMOOTH }}
           >
             <img
-              className="w-full h-full object-cover rounded-full shadow-xl"
+              className="w-full h-full object-contain"
               alt="Celestial orb"
               src={CELESTIAL_ORB}
             />
@@ -91,10 +108,10 @@ export default function IntroScene({ onComplete }: IntroSceneProps) {
             style={{ willChange: 'transform, opacity' }}
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 0.9, y: 0 }}
-            transition={{ delay: 0.44, ...ENTER_SMOOTH }}
+            transition={{ delay: 0.48, ...ENTER_SMOOTH }}
           >
             <img
-              className="w-full h-full object-cover rounded-xl border-2 border-on-background/20 shadow-xl"
+              className="w-full h-full object-contain"
               alt="Healing begins with letting go"
               src={HEALING_CARD}
             />
