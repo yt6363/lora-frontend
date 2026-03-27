@@ -1,5 +1,11 @@
 {
   "buildCommand": "tsc -b && vite build",
   "outputDirectory": "dist",
-  "framework": "vite"
+  "framework": "vite",
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "https://lora-backend-production.up.railway.app/api/:path*"
+    }
+  ]
 }
