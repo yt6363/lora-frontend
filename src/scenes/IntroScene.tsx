@@ -3,15 +3,12 @@ import { useState, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { playTap, playWhoosh, unlockAudio } from '../utils/haptics'
 
-// Stitch asset URLs — exact from splash.html
+// Background + floating element assets
 const SKY_BG =
   'https://lh3.googleusercontent.com/aida-public/AB6AXuCFy4KSQVB7jKeau1VI6U1ii9I4cPgamQtEHIZ7LRoTRnIVmw12k744DFrHO2VXuUs4yw-mNzP3NJWmJDdbKaNelZw4nDLsTDcCObfjm7SUYePQSfcugWGUYY1GsihTGsdZFnpOCq0VwCLHxB0JD-UWVHLVbAE0Y6ujZMrXabH9LvDYhNpkftCz150c5fgMlNTnHcM6BsvKM1t0RxvC8Wdvopcs0IcDDSlHkIroNcZD_N2cIlWxIH2bhpFiU-bnZZDZ24YTfCaY2cMS'
-const CRYSTAL_BALL =
-  'https://lh3.googleusercontent.com/aida-public/AB6AXuDkN1DI_XdIxPhvtMdZBueCHS12nzXprK7U3lbB8Bdv4ZnSNm7e5pMag_Qbrsjdsst6srmHSbLwd64nA6AG_2s6TLFBJVLFuMCX8mMBoiV65GLw1pY9irAr-fo3vnEMI3FhzOGBu_u8NWa-XdVWmGHKYPLp_ZaT9VqJye64IUanDeTAbLCqJvsr8MfhZVgPf8n0lP5tK_f52bNZ7xBoMwsMgsewPQvRpQmQejGYwvJDLcpSHZMEv0-b0qlEO0TQRdVaiLdOCoBYX2_A'
-const MYSTICAL_EYE =
-  'https://lh3.googleusercontent.com/aida-public/AB6AXuDkWvNnHx47Qn4xrzqeUo8_M_LHd7o7lQXp6_cqq1DeOquwZLpYxOzsegNzPWWWpUvRrtrHAmjD8NAW0tnIyatIuV_Z6KK0D8Qc9iUEPen02p_Pl8uW1jixJKje6SDoafEpf-c_ScFDqpoJezamkfYwSVzKrgel3qj9S9C6gfMTBO9G7vGTJ0m67Hosq6WnM6yapD2sYgVMS2HNDEHkjq76sg8P6WDHQ-d8MISrAeRkQAtn4S46otgDn0lIeVQENfkFrgYg5Qajw6sD'
-const CANDLE =
-  'https://lh3.googleusercontent.com/aida-public/AB6AXuA-3IwMPIUrMMBn6SLO-lOKXz8zfsPYMhB9s_72MCjg8LXUjWepC1dDDcupuz2ditqCSnDx6zldIrDwvUJMFJkxOKKc2b4008z96jQLXtg5XTkRuWl0T7uVN6xWGW56R9tAZ9-kech5Wj2F2JOdDlOqEHjROhpbKy2XaIeloMr2wCYCPcpOrOkPV1uIraQQhFOfmKKso1PiVTG6RCzP4ofDKYjMsGu-b9NWlI7IOKDuZ88Va-7FMFkZJEhWnhTLx1TJuVajKZ_QUmGI'
+const TAROT_CARD = '/intro-tarot.png'
+const CELESTIAL_ORB = '/intro-orb.png'
+const HEALING_CARD = '/intro-healing.png'
 
 // Smooth easing — no bounce
 const SMOOTH: [number, number, number, number] = [0.25, 0.1, 0.25, 1]
@@ -55,68 +52,51 @@ export default function IntroScene({ onComplete }: IntroSceneProps) {
       <main className="relative z-10 min-h-screen flex flex-col items-center justify-center px-6 text-center">
         {/* ── Floating 3D Objects Cluster ── */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          {/* Crystal Ball */}
+          {/* Tarot Card — top left */}
           <motion.div
             layout={false}
-            className="absolute top-[15%] left-[10%] w-32 h-32 md:w-48 md:h-48 opacity-90 drop-shadow-2xl rotate-[-12deg]"
+            className="absolute top-[12%] left-[6%] w-28 h-44 md:w-40 md:h-64 drop-shadow-2xl rotate-[-8deg]"
             style={{ willChange: 'transform, opacity' }}
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 0.9, y: 0 }}
             transition={{ delay: 0.3, ...ENTER_SMOOTH }}
           >
             <img
-              className="w-full h-full object-contain"
-              alt="Crystal ball"
-              src={CRYSTAL_BALL}
+              className="w-full h-full object-cover rounded-xl border-2 border-on-background/20 shadow-xl"
+              alt="Tarot card"
+              src={TAROT_CARD}
             />
           </motion.div>
 
-          {/* Floating Stars */}
+          {/* Celestial Orb — top right */}
           <motion.div
             layout={false}
-            className="absolute top-[20%] right-[15%] text-primary"
-            style={{ willChange: 'transform, opacity', rotate: 12 }}
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 0.8, scale: 1.5 }}
+            className="absolute top-[16%] right-[8%] w-28 h-28 md:w-44 md:h-44 drop-shadow-2xl"
+            style={{ willChange: 'transform, opacity' }}
+            initial={{ opacity: 0, scale: 0.6 }}
+            animate={{ opacity: 0.85, scale: 1 }}
             transition={{ delay: 0.36, ...ENTER_SMOOTH }}
           >
-            <span
-              className="material-symbols-outlined !text-6xl"
-              style={{ fontVariationSettings: "'FILL' 1", filter: 'drop-shadow(0 0 15px rgba(46,91,255,0.5))' }}
-            >
-              star
-            </span>
-          </motion.div>
-
-          {/* Mystical Eye */}
-          <motion.div
-            layout={false}
-            className="absolute bottom-[25%] left-[12%] w-24 h-24 md:w-36 md:h-36 hover:rotate-6 transition-transform"
-            style={{ willChange: 'transform, opacity' }}
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 0.85, x: 0 }}
-            transition={{ delay: 0.42, ...ENTER_SMOOTH }}
-          >
             <img
-              className="w-full h-full object-contain rounded-full border-4 border-on-background shadow-xl"
-              alt="Mystical eye"
-              src={MYSTICAL_EYE}
+              className="w-full h-full object-cover rounded-full shadow-xl"
+              alt="Celestial orb"
+              src={CELESTIAL_ORB}
             />
           </motion.div>
 
-          {/* Magic Candle */}
+          {/* Healing Quote — bottom right */}
           <motion.div
             layout={false}
-            className="absolute bottom-[15%] right-[10%] w-28 h-40 opacity-90 rotate-3"
+            className="absolute bottom-[14%] right-[6%] w-32 h-32 md:w-44 md:h-44 rotate-[3deg] drop-shadow-2xl"
             style={{ willChange: 'transform, opacity' }}
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 0.9, y: 0 }}
-            transition={{ delay: 0.48, ...ENTER_SMOOTH }}
+            transition={{ delay: 0.44, ...ENTER_SMOOTH }}
           >
             <img
-              className="w-full h-full object-contain"
-              alt="Magic candle"
-              src={CANDLE}
+              className="w-full h-full object-cover rounded-xl border-2 border-on-background/20 shadow-xl"
+              alt="Healing begins with letting go"
+              src={HEALING_CARD}
             />
           </motion.div>
         </div>
