@@ -22,25 +22,42 @@ interface IntroSceneProps {
 
 export default function IntroScene({ onComplete }: IntroSceneProps) {
   const [phase, setPhase] = useState<'enter' | 'title' | 'tagline' | 'ready'>('enter')
+  const [audioReady, setAudioReady] = useState(false)
 
+  // Visual phases run immediately (no sound needed)
   useEffect(() => {
     const timers = [
-      setTimeout(() => { setPhase('title'); playSparkle() }, 600),
-      setTimeout(() => { setPhase('tagline'); playBell(660) }, 1600),
-      setTimeout(() => { setPhase('ready'); playBell(880) }, 2400),
+      setTimeout(() => setPhase('title'), 600),
+      setTimeout(() => setPhase('tagline'), 1600),
+      setTimeout(() => setPhase('ready'), 2400),
     ]
     return () => timers.forEach(clearTimeout)
   }, [])
 
-  const handleBegin = useCallback(() => {
+  // Unlock audio on first tap anywhere, then play the sparkle
+  const handleScreenTap = useCallback(() => {
+    if (audioReady) return
     unlockAudio()
+    setAudioReady(true)
+    playSparkle()
+  }, [audioReady])
+
+  // Once audio is unlocked, play sounds for remaining phase transitions
+  useEffect(() => {
+    if (!audioReady) return
+    if (phase === 'tagline') playBell(660)
+    if (phase === 'ready') playBell(880)
+  }, [phase, audioReady])
+
+  const handleBegin = useCallback(() => {
+    if (!audioReady) unlockAudio()
     playTap()
     playWhoosh()
     onComplete()
-  }, [onComplete])
+  }, [onComplete, audioReady])
 
   return (
-    <div className="fixed inset-0 overflow-hidden bg-background font-body text-on-background selection:bg-primary-container selection:text-white">
+    <div onClick={handleScreenTap} className="fixed inset-0 overflow-hidden bg-background font-body text-on-background selection:bg-primary-container selection:text-white">
       {/* ── Ethereal Background Canvas ── */}
       <div className="fixed inset-0 z-0">
         <div

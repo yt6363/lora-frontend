@@ -11,8 +11,16 @@ let _unlocked = false
 
 function ctx(): AudioContext {
   if (!audioCtx) audioCtx = new AudioContext()
-  if (audioCtx.state === 'suspended') audioCtx.resume()
+  // Always try to resume — browsers may re-suspend between gestures
+  if (audioCtx.state === 'suspended') {
+    audioCtx.resume().catch(() => {})
+  }
   return audioCtx
+}
+
+/** Check if audio context is active and ready to play */
+export function isAudioReady(): boolean {
+  return !!audioCtx && audioCtx.state === 'running'
 }
 
 /** Pre-warm AudioContext on first user gesture so subsequent plays never get blocked */
