@@ -6,8 +6,6 @@ import { playTap, playWhoosh, unlockAudio } from '../utils/haptics'
 // Background + floating element assets
 const SKY_BG =
   'https://lh3.googleusercontent.com/aida-public/AB6AXuCFy4KSQVB7jKeau1VI6U1ii9I4cPgamQtEHIZ7LRoTRnIVmw12k744DFrHO2VXuUs4yw-mNzP3NJWmJDdbKaNelZw4nDLsTDcCObfjm7SUYePQSfcugWGUYY1GsihTGsdZFnpOCq0VwCLHxB0JD-UWVHLVbAE0Y6ujZMrXabH9LvDYhNpkftCz150c5fgMlNTnHcM6BsvKM1t0RxvC8Wdvopcs0IcDDSlHkIroNcZD_N2cIlWxIH2bhpFiU-bnZZDZ24YTfCaY2cMS'
-const TAROT_CARD = '/intro-tarot.png'
-const CELESTIAL_ORB = '/intro-orb.png'
 
 // Smooth easing — no bounce
 const SMOOTH: [number, number, number, number] = [0.25, 0.1, 0.25, 1]
@@ -54,17 +52,22 @@ export default function IntroScene({ onComplete }: IntroSceneProps) {
           {/* Tarot Card — top left */}
           <motion.div
             layout={false}
-            className="absolute top-[12%] left-[6%] w-28 h-44 md:w-40 md:h-64 drop-shadow-2xl rotate-[-8deg]"
+            className="absolute top-[12%] left-[6%] w-28 h-44 md:w-36 md:h-56 rotate-[-8deg] drop-shadow-2xl"
             style={{ willChange: 'transform, opacity' }}
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 0.9, y: 0 }}
             transition={{ delay: 0.3, ...ENTER_SMOOTH }}
           >
-            <img
-              className="w-full h-full object-contain"
-              alt="Tarot card"
-              src={TAROT_CARD}
-            />
+            <div className="w-full h-full bg-surface-bright/90 backdrop-blur-sm border-2 border-secondary/30 rounded-sm flex flex-col items-center justify-between py-3 px-2 shadow-xl">
+              <span className="font-handwritten text-xs text-secondary/60">XII</span>
+              <span
+                className="material-symbols-outlined !text-5xl md:!text-6xl text-secondary"
+                style={{ fontVariationSettings: "'FILL' 1" }}
+              >
+                water_drop
+              </span>
+              <span className="font-handwritten text-sm text-secondary tracking-wider">PISCES</span>
+            </div>
           </motion.div>
 
           {/* Floating Star */}
@@ -87,23 +90,26 @@ export default function IntroScene({ onComplete }: IntroSceneProps) {
           {/* Celestial Orb — bottom left */}
           <motion.div
             layout={false}
-            className="absolute bottom-[22%] left-[10%] w-28 h-28 md:w-44 md:h-44 drop-shadow-2xl"
+            className="absolute bottom-[22%] left-[10%] w-28 h-28 md:w-40 md:h-40 drop-shadow-2xl"
             style={{ willChange: 'transform, opacity' }}
             initial={{ opacity: 0, scale: 0.6 }}
             animate={{ opacity: 0.85, scale: 1 }}
             transition={{ delay: 0.42, ...ENTER_SMOOTH }}
           >
-            <img
-              className="w-full h-full object-contain"
-              alt="Celestial orb"
-              src={CELESTIAL_ORB}
-            />
+            <div className="w-full h-full rounded-full bg-gradient-to-br from-primary/20 via-secondary/30 to-primary/10 backdrop-blur-sm border-2 border-white/20 flex items-center justify-center shadow-xl">
+              <span
+                className="material-symbols-outlined !text-5xl text-secondary"
+                style={{ fontVariationSettings: "'FILL' 1", filter: 'drop-shadow(0 0 12px rgba(196,145,68,0.6))' }}
+              >
+                sunny
+              </span>
+            </div>
           </motion.div>
 
           {/* Healing Quote — bottom right */}
           <motion.div
             layout={false}
-            className="absolute bottom-[14%] right-[6%] w-36 h-36 md:w-48 md:h-48 rotate-[3deg] drop-shadow-2xl"
+            className="absolute bottom-[14%] right-[6%] w-36 h-36 md:w-44 md:h-44 rotate-[3deg] drop-shadow-2xl"
             style={{ willChange: 'transform, opacity' }}
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 0.9, y: 0 }}
