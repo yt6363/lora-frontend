@@ -8,7 +8,6 @@ const SKY_BG =
   'https://lh3.googleusercontent.com/aida-public/AB6AXuCFy4KSQVB7jKeau1VI6U1ii9I4cPgamQtEHIZ7LRoTRnIVmw12k744DFrHO2VXuUs4yw-mNzP3NJWmJDdbKaNelZw4nDLsTDcCObfjm7SUYePQSfcugWGUYY1GsihTGsdZFnpOCq0VwCLHxB0JD-UWVHLVbAE0Y6ujZMrXabH9LvDYhNpkftCz150c5fgMlNTnHcM6BsvKM1t0RxvC8Wdvopcs0IcDDSlHkIroNcZD_N2cIlWxIH2bhpFiU-bnZZDZ24YTfCaY2cMS'
 const TAROT_CARD = '/intro-tarot.png'
 const CELESTIAL_ORB = '/intro-orb.png'
-const HEALING_CARD = '/intro-healing.png'
 
 // Smooth easing — no bounce
 const SMOOTH: [number, number, number, number] = [0.25, 0.1, 0.25, 1]
@@ -104,17 +103,17 @@ export default function IntroScene({ onComplete }: IntroSceneProps) {
           {/* Healing Quote — bottom right */}
           <motion.div
             layout={false}
-            className="absolute bottom-[14%] right-[6%] w-32 h-32 md:w-44 md:h-44 rotate-[3deg] drop-shadow-2xl"
+            className="absolute bottom-[14%] right-[6%] w-36 h-36 md:w-48 md:h-48 rotate-[3deg] drop-shadow-2xl"
             style={{ willChange: 'transform, opacity' }}
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 0.9, y: 0 }}
             transition={{ delay: 0.48, ...ENTER_SMOOTH }}
           >
-            <img
-              className="w-full h-full object-contain"
-              alt="Healing begins with letting go"
-              src={HEALING_CARD}
-            />
+            <div className="w-full h-full bg-surface-bright/90 backdrop-blur-sm border-2 border-secondary/40 rounded-sm flex items-center justify-center p-5 shadow-xl">
+              <p className="font-handwritten text-xl md:text-2xl text-secondary leading-tight text-center">
+                Healing begins with letting go.
+              </p>
+            </div>
           </motion.div>
         </div>
 
