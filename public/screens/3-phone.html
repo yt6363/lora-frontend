@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,700;1,400;1,700&amp;family=Manrope:wght@400;700;800&amp;family=Epilogue:wght@400;700;900&amp;family=Reenie+Beanie&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container": "#efefd7",
+              "on-background": "#1b1d0e",
+              "tertiary-container": "#6d6d6d",
+              "on-tertiary-fixed-variant": "#474747",
+              "secondary-container": "#fe7e4f",
+              "error-container": "#ffdad6",
+              "surface-tint": "#124af0",
+              "tertiary": "#555555",
+              "on-tertiary": "#ffffff",
+              "surface-container-highest": "#e4e4cc",
+              "on-secondary": "#ffffff",
+              "primary": "#0040e0",
+              "primary-container": "#2e5bff",
+              "primary-fixed-dim": "#b8c3ff",
+              "surface-container-lowest": "#ffffff",
+              "surface-container-high": "#eaead1",
+              "on-primary-container": "#efefff",
+              "primary-fixed": "#dde1ff",
+              "surface-container-low": "#f5f5dc",
+              "on-error": "#ffffff",
+              "outline": "#747688",
+              "tertiary-fixed-dim": "#c6c6c6",
+              "tertiary-fixed": "#e2e2e2",
+              "surface-variant": "#e4e4cc",
+              "on-primary-fixed-variant": "#0035be",
+              "secondary-fixed": "#ffdbcf",
+              "on-secondary-fixed": "#380c00",
+              "on-surface-variant": "#434656",
+              "surface-bright": "#fbfbe2",
+              "secondary-fixed-dim": "#ffb59c",
+              "surface": "#fbfbe2",
+              "on-surface": "#1b1d0e",
+              "on-error-container": "#93000a",
+              "inverse-primary": "#b8c3ff",
+              "on-tertiary-container": "#f0f0f0",
+              "outline-variant": "#c4c5d9",
+              "on-secondary-container": "#6b1f00",
+              "error": "#ba1a1a",
+              "on-secondary-fixed-variant": "#822800",
+              "on-primary": "#ffffff",
+              "inverse-surface": "#303221",
+              "secondary": "#a43c12",
+              "on-primary-fixed": "#001356",
+              "background": "#fbfbe2",
+              "on-tertiary-fixed": "#1b1b1b",
+              "surface-dim": "#dbdcc3",
+              "inverse-on-surface": "#f2f2d9"
+            },
+            fontFamily: {
+              "headline": ["Newsreader", "serif"],
+              "body": ["Manrope", "sans-serif"],
+              "label": ["Epilogue", "sans-serif"],
+              "handwritten": ["Reenie Beanie", "cursive"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .brutalist-shadow {
+            box-shadow: 8px 8px 0px 0px #1b1d0e;
+        }
+        .sticker-shadow {
+            filter: drop-shadow(0 20px 30px rgba(0,0,0,0.06));
+        }
+        .floating {
+            animation: floating 6s ease-in-out infinite;
+        }
+        @keyframes floating {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body min-h-screen flex flex-col overflow-hidden">
+<!-- Top Navigation suppressed per rules (Transactional/Onboarding Flow) -->
+<main class="flex-grow flex flex-col items-center justify-center relative p-6">
+<!-- Large Solid Background Block -->
+<div class="absolute inset-0 z-0 flex items-center justify-center p-4 md:p-12">
+<div class="w-full h-full max-w-4xl bg-secondary-container rounded-none relative overflow-hidden flex flex-col items-center justify-center brutalist-shadow">
+<!-- Decorative Elements -->
+<div class="absolute top-[-10%] left-[-5%] w-64 h-64 bg-primary opacity-10 rounded-full blur-3xl"></div>
+<div class="absolute bottom-[-5%] right-[-5%] w-80 h-80 bg-secondary opacity-20 rounded-full blur-2xl"></div>
+<!-- Floating 3D Objects -->
+<div class="absolute top-12 left-8 md:top-24 md:left-24 z-20 floating sticker-shadow" style="animation-delay: 0s;">
+<div class="text-on-primary-container text-6xl md:text-8xl select-none">
+<span class="material-symbols-outlined !text-[80px] md:!text-[120px]" style="font-variation-settings: 'FILL' 1;">brightness_3</span>
+</div>
+</div>
+<div class="absolute bottom-16 right-8 md:bottom-24 md:right-32 z-20 floating sticker-shadow" style="animation-delay: 2s;">
+<div class="text-error text-5xl md:text-7xl select-none transform rotate-12">
+<span class="material-symbols-outlined !text-[60px] md:!text-[100px]" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</div>
+</div>
+<!-- Content Container -->
+<div class="relative z-10 w-full max-w-lg px-8 flex flex-col items-center">
+<!-- Header Grouping -->
+<div class="mb-12 text-center">
+<p class="font-body text-xl uppercase tracking-[0.2em] font-bold text-on-surface mb-2">and your</p>
+<h1 class="font-headline italic text-7xl md:text-9xl font-bold leading-none text-on-surface">number?</h1>
+</div>
+<!-- Handwritten Annotation -->
+<div class="absolute top-[-40px] right-[-20px] md:right-[-60px] transform rotate-[8deg] bg-surface-bright p-4 brutalist-shadow z-30">
+<p class="font-handwritten text-4xl md:text-5xl text-primary leading-none">hey {name}!</p>
+</div>
+<!-- Input Field Area -->
+<div class="w-full mb-8 relative">
+<label class="sr-only" for="phone">Phone Number</label>
+<input class="w-full bg-surface-container-low text-on-surface text-3xl md:text-4xl font-headline italic p-8 rounded-none border-4 border-on-background focus:ring-0 focus:border-primary placeholder:opacity-40 text-center tracking-widest" id="phone" placeholder="dial into the cosmos..." type="tel"/>
+<!-- Small Doodle underneath -->
+<div class="absolute -bottom-6 left-1/2 -translate-x-1/2 w-48 h-2 bg-on-background rounded-full opacity-10"></div>
+</div>
+<!-- Action Button -->
+<button class="group relative bg-primary-container text-on-primary-container font-label font-black text-2xl md:text-3xl uppercase py-6 px-12 rounded-full border-4 border-on-background brutalist-shadow hover:scale-105 active:scale-95 transition-all">
+<span class="relative z-10 flex items-center gap-3">
+                            read me
+                            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">magic_button</span>
+</span>
+<!-- Sticker Hover Effect -->
+<div class="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 rounded-full transition-opacity"></div>
+</button>
+<!-- Trust Annotation -->
+<div class="mt-12 opacity-60 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">lock</span>
+<p class="font-body text-sm font-bold uppercase tracking-widest">Encrypted connections only</p>
+</div>
+</div>
+<!-- Random Sticker Decorations -->
+<div class="absolute top-1/4 right-12 hidden lg:block transform rotate-12 opacity-40">
+<img class="w-24 h-24 object-contain" data-alt="stylized 3D render of a iridescent holographic crystal prism reflecting rainbow light against a clean background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfgxlE7kdPcGzzj7jMInZnQLoRCya76aTE8IupwwqT2FLs71HjKpmLY0qkA0DgGrBnkS6Wb4vyZPDcjUu-h40ndMoFTRuEkfzELsVcxUdSAaLcHBkMj87ORfOU8GXE45DUbQVtRjHpSJjjkTTTlp373MbuicD6xHm_j0mkIFz5L41cJSrWOmeGRwZhBaHTvS7kGVoo-csfyIjyAbTQzTx7RT90jJNqMYaiGzC-m2rklbj7eNuiF9Ydpvv_lWA8iSB-LvPo1DJGSCOI"/>
+</div>
+</div>
+</div>
+</main>
+<!-- Navigation Shell suppressed per rules (Transactional/Task-Focused flow for Phone Entry) -->
+</body></html>

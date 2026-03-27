@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LORA - What's Your Name?</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,700;1,400;1,700&amp;family=Manrope:wght@400;700;800&amp;family=Epilogue:wght@400;700;900&amp;family=Reenie+Beanie&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .font-handwritten { font-family: 'Reenie+Beanie', cursive; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48;
+        }
+        .bg-cobalt { background-color: #2E5BFF; }
+        .text-cobalt { color: #2E5BFF; }
+        
+        /* Custom layout adjustments for the "Poster" feel */
+        .poster-canvas {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-container": "#efefd7",
+                        "on-background": "#1b1d0e",
+                        "tertiary-container": "#6d6d6d",
+                        "on-tertiary-fixed-variant": "#474747",
+                        "secondary-container": "#fe7e4f",
+                        "error-container": "#ffdad6",
+                        "surface-tint": "#124af0",
+                        "tertiary": "#555555",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-highest": "#e4e4cc",
+                        "on-secondary": "#ffffff",
+                        "primary": "#0040e0",
+                        "primary-container": "#2e5bff",
+                        "primary-fixed-dim": "#b8c3ff",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-high": "#eaead1",
+                        "on-primary-container": "#efefff",
+                        "primary-fixed": "#dde1ff",
+                        "surface-container-low": "#f5f5dc",
+                        "on-error": "#ffffff",
+                        "outline": "#747688",
+                        "tertiary-fixed-dim": "#c6c6c6",
+                        "tertiary-fixed": "#e2e2e2",
+                        "surface-variant": "#e4e4cc",
+                        "on-primary-fixed-variant": "#0035be",
+                        "secondary-fixed": "#ffdbcf",
+                        "on-secondary-fixed": "#380c00",
+                        "on-surface-variant": "#434656",
+                        "surface-bright": "#fbfbe2",
+                        "secondary-fixed-dim": "#ffb59c",
+                        "surface": "#fbfbe2",
+                        "on-surface": "#1b1d0e",
+                        "on-error-container": "#93000a",
+                        "inverse-primary": "#b8c3ff",
+                        "on-tertiary-container": "#f0f0f0",
+                        "outline-variant": "#c4c5d9",
+                        "on-secondary-container": "#6b1f00",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed-variant": "#822800",
+                        "on-primary": "#ffffff",
+                        "inverse-surface": "#303221",
+                        "secondary": "#a43c12",
+                        "on-primary-fixed": "#001356",
+                        "background": "#fbfbe2",
+                        "on-tertiary-fixed": "#1b1b1b",
+                        "surface-dim": "#dbdcc3",
+                        "inverse-on-surface": "#f2f2d9"
+                    },
+                    fontFamily: {
+                        "headline": ["Newsreader"],
+                        "body": ["Manrope"],
+                        "label": ["Epilogue"]
+                    },
+                    borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-primary-container font-body text-on-primary-container m-0 p-0 selection:bg-secondary-container selection:text-white">
+<!-- TopAppBar suppressed per "Task-Focused" rule for onboarding screens -->
+<main class="poster-canvas px-6">
+<!-- Floating 3D Objects (Decorative Collage) -->
+<div class="absolute top-[10%] left-[15%] rotate-[-12deg] z-10 opacity-90 transition-transform hover:scale-110">
+<img alt="Crystal Star" class="w-32 md:w-48 h-auto drop-shadow-2xl" data-alt="a hyper-realistic 3D glossy crystal star with iridescent reflections isolated on transparent background magical aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBD60615LInvcacHJFSfIv_k3olreekW2h0KYDpipV6jeX6V0IC5HTaMOSc6VFwph0gROnycS120Jvb7vfezFcwYuDxs0ZJlbpiZisJS01ugubTXDtufHRlGiNVJQSi7Rzo4q3nC3yHY-aUCGi4RC48TkpoJ5QWlyYQsyWkRpeNbGbg71MnMbSbs27XbVpe7yaAKTMPGIohyUs2qx_o6hdkx0b7C3FDWCVp2dzDiIOA6kF5AmHvNRWLxk0wwRON2Mdnc4lVf_DxztSe"/>
+</div>
+<div class="absolute bottom-[15%] right-[10%] rotate-[15deg] z-10 opacity-80 hover:rotate-[25deg] transition-all duration-500">
+<img alt="Disco Ball" class="w-40 md:w-64 h-auto drop-shadow-[0_20px_50px_rgba(0,0,0,0.3)]" data-alt="a highly detailed 3D disco ball with shining mirrors and soft blue reflections isolated on transparent background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_NumKt8Jp6wypSvzSD_jjzwSU-CoH7Gf_jY4qe-Pf9QMdhGKeZp68OaZqz8zeq8xvdCcLsQzqbVhUxrVW4XTrjZa1oWsiDoAx7RoW6lPb5amjIgRToyrQ5yaQmKzeZIXHNRZLu20YF57Az-_Ww6mZkK3lzdmGd5L9QAZsMYbwhpthax4s1RNQrdPkvqPn5MZS-tIPaL_fjje62qRKLU2S_NSAJbk-kdcx3UNS4iXtbw1cfFvJKzzDOGsnugLYRkuc3YaVjkwU568G"/>
+</div>
+<div class="absolute top-[20%] right-[20%] rotate-[5deg] z-0 pointer-events-none opacity-40">
+<span class="material-symbols-outlined text-white text-[120px] lg:text-[200px]" style="font-variation-settings: 'FILL' 0;">auto_awesome</span>
+</div>
+<!-- Main Identity Poster Content -->
+<div class="relative z-20 w-full max-w-4xl text-center flex flex-col items-center">
+<div class="mb-8">
+<span class="font-handwritten text-white text-5xl md:text-7xl block rotate-[-3deg] -mb-4 tracking-wider">
+                    what's
+                </span>
+<h1 class="font-headline italic text-white text-7xl md:text-9xl font-bold tracking-tighter leading-none">
+                    your name?
+                </h1>
+</div>
+<!-- Single Bold Input Field -->
+<div class="w-full max-w-2xl group">
+<div class="relative">
+<!-- Annotation Doodle -->
+<div class="absolute -top-12 -right-8 font-handwritten text-secondary-container text-3xl rotate-[8deg] hidden md:block">
+                        don't be shy!
+                        <span class="block text-xl">✨</span>
+</div>
+<input class="w-full bg-surface-container-low border-none text-on-background font-headline italic text-3xl md:text-5xl px-8 py-10 rounded-none md:rounded-full shadow-[12px_12px_0px_0px_rgba(27,29,14,1)] focus:ring-4 focus:ring-secondary-container transition-all placeholder:text-outline-variant outline-none" placeholder="Type it here..." type="text"/>
+<!-- Sticker CTA Button -->
+<button class="absolute right-4 top-1/2 -translate-y-1/2 bg-primary text-white font-label font-black uppercase tracking-widest px-8 py-4 rounded-full border-2 border-on-background shadow-[4px_4px_0px_0px_rgba(27,29,14,1)] hover:rotate-2 hover:scale-110 active:scale-90 transition-all z-30 group-focus-within:opacity-100">
+                        NEXT
+                    </button>
+</div>
+</div>
+<div class="mt-16 flex flex-col items-center space-y-4">
+<div class="flex items-center space-x-2">
+<span class="w-3 h-3 rounded-full bg-white opacity-40"></span>
+<span class="w-10 h-3 rounded-full bg-secondary-container"></span>
+<span class="w-3 h-3 rounded-full bg-white opacity-40"></span>
+</div>
+<p class="font-body text-white font-bold uppercase tracking-[0.3em] text-xs opacity-80">
+                    Step 2 of 4: The Invocation
+                </p>
+</div>
+</div>
+<!-- Signature "Voice of a Friend" Margin Note -->
+<div class="absolute bottom-10 left-10 md:left-20 max-w-[200px] pointer-events-none">
+<p class="font-handwritten text-white text-2xl rotate-[5deg] leading-tight">
+                "A name is the first key to the vault of the soul..." 
+                <span class="block text-right mt-2">— Lora</span>
+</p>
+</div>
+</main>
+<!-- Navigation suppressed per "Automatic Suppression" rule for transactional/onboarding flows -->
+</body></html>

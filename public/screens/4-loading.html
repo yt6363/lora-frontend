@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LORA — Loading</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&amp;family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Manrope:wght@200..800&amp;family=Epilogue:wght@100..900&amp;family=Caveat:wght@400..700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container": "#efefd7",
+              "on-background": "#1b1d0e",
+              "tertiary-container": "#6d6d6d",
+              "on-tertiary-fixed-variant": "#474747",
+              "secondary-container": "#fe7e4f",
+              "error-container": "#ffdad6",
+              "surface-tint": "#124af0",
+              "tertiary": "#555555",
+              "on-tertiary": "#ffffff",
+              "surface-container-highest": "#e4e4cc",
+              "on-secondary": "#ffffff",
+              "primary": "#0040e0",
+              "primary-container": "#2e5bff",
+              "primary-fixed-dim": "#b8c3ff",
+              "surface-container-lowest": "#ffffff",
+              "surface-container-high": "#eaead1",
+              "on-primary-container": "#efefff",
+              "primary-fixed": "#dde1ff",
+              "surface-container-low": "#f5f5dc",
+              "on-error": "#ffffff",
+              "outline": "#747688",
+              "tertiary-fixed-dim": "#c6c6c6",
+              "tertiary-fixed": "#e2e2e2",
+              "surface-variant": "#e4e4cc",
+              "on-primary-fixed-variant": "#0035be",
+              "secondary-fixed": "#ffdbcf",
+              "on-secondary-fixed": "#380c00",
+              "on-surface-variant": "#434656",
+              "surface-bright": "#fbfbe2",
+              "secondary-fixed-dim": "#ffb59c",
+              "surface": "#fbfbe2",
+              "on-surface": "#1b1d0e",
+              "on-error-container": "#93000a",
+              "inverse-primary": "#b8c3ff",
+              "on-tertiary-container": "#f0f0f0",
+              "outline-variant": "#c4c5d9",
+              "on-secondary-container": "#6b1f00",
+              "error": "#ba1a1a",
+              "on-secondary-fixed-variant": "#822800",
+              "on-primary": "#ffffff",
+              "inverse-surface": "#303221",
+              "secondary": "#a43c12",
+              "on-primary-fixed": "#001356",
+              "background": "#fbfbe2",
+              "on-tertiary-fixed": "#1b1b1b",
+              "surface-dim": "#dbdcc3",
+              "inverse-on-surface": "#f2f2d9"
+            },
+            fontFamily: {
+              "headline": ["Newsreader"],
+              "body": ["Manrope"],
+              "label": ["Epilogue"],
+              "handwritten": ["Caveat"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>.material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
+    }
+.sky-bg {
+    background: linear-gradient(180deg, #b8c3ff 0%, #f5f5dc 100%);
+    position: relative;
+    overflow: hidden
+    }
+.cloud-layer {
+    position: absolute;
+    width: 200%;
+    height: 100%;
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuCydiA6u6or00OHKl8KVjEbnaJnpIqVp2KR9JTjJQgf19XeXmZu1PExJJ7muR-XUxmzew3dVbA-rxLrjLTs4cJUf3QaY4UGOhYCe8ixX52gWDyfLY0QxCKLStlXtuv0CWtSoAW216-G2duWyvRIzut3EpZNUvIv7D2l_qDajR8hFgq4tc-D6OORkybStsJDUolVsxXD2xkL_EN64sUyXjLbVweLbbVJQlSqXCA6Xc4PE4vFnkkY0196qP6rPXDZPHWAdlgWGORQZCaW);
+    opacity: 0.4;
+    pointer-events: none
+    }
+.floating-crystal {
+    filter: drop-shadow(0 20px 30px rgba(46, 91, 255, 0.3))
+    }
+.brutalist-shadow {
+    box-shadow: 8px 8px 0 0 #1b1d0e
+    }</style>
+</head>
+<body class="bg-surface font-body text-on-surface min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 py-4 bg-transparent">
+<div class="text-4xl font-bold tracking-tight text-[#2E5BFF] italic" style="font-family: 'Lora', serif;">Lora</div>
+<div class="flex gap-4">
+<button class="material-symbols-outlined text-[#2E5BFF] hover:rotate-2 hover:scale-110 transition-transform p-2">auto_awesome</button>
+<button class="material-symbols-outlined text-[#2E5BFF] hover:rotate-2 hover:scale-110 transition-transform p-2">account_circle</button>
+</div>
+</header>
+<!-- Main Content Canvas (Loading State) -->
+<main class="flex-grow sky-bg flex flex-col items-center justify-center relative px-6">
+<div class="cloud-layer"></div>
+<!-- Mystical Object Container -->
+<div class="relative z-10 flex flex-col items-center">
+<!-- The Crystal Star (3D Asset Representation) -->
+<div class="relative w-64 h-64 md:w-80 md:h-80 flex items-center justify-center group">
+<!-- Ambient Glow Behind -->
+<div class="absolute inset-0 bg-primary opacity-10 blur-[60px] rounded-full"></div>
+<!-- The Core Object -->
+<div class="relative animate-pulse">
+<img alt="Crystal" class="w-48 h-48 md:w-60 md:h-60 object-contain floating-crystal rotate-12 transition-all duration-1000" data-alt="a majestic iridescent floating quartz crystal with sharp geometric facets reflecting blue and purple light on a soft cloud background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPjouBqM_5SKcGPSL1Xk2b8MlhGDO3G1CmmxTAYp0W26BxVzYUYLOhBi7sY4YkN9PCx0jDTIJ0ejNDVP0XzeSkFEHXHp9v9gUjWf2uvdFeZbRL6qRtkiwWzW-QuNIjG63P3C-VcFHE2QkY5xPn4IG074_MRbQ-Nh1xpvs8zigCMgmstIIRTJ-DyKyOhIkBMGdcA-LagpEiM77FFH7GnkHaJaXA7rKr62UEuhOG1bbaEr-96LUYFgGln66ZzrmXuDgV0CUw1tPfi9jO"/>
+</div>
+<!-- Overlapping Decorative Elements (Collage Rule) -->
+<div class="absolute -top-4 -right-4 md:-top-8 md:-right-8 w-16 h-16 md:w-20 md:h-20 bg-secondary-container rounded-full flex items-center justify-center rotate-12 brutalist-shadow">
+<span class="material-symbols-outlined text-white text-3xl md:text-4xl" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<div class="absolute -bottom-6 -left-2 rotate-[-8deg] bg-surface-container-highest px-4 py-2 brutalist-shadow">
+<span class="font-headline italic text-on-surface text-lg">Aligning...</span>
+</div>
+</div>
+<!-- Loading Text -->
+<div class="mt-12 text-center space-y-4">
+<h1 class="font-headline text-4xl md:text-6xl text-on-background italic tracking-tight">
+                    Preparing your <span class="font-body font-black uppercase text-primary">vision</span>
+</h1>
+<p class="font-handwritten text-3xl md:text-4xl text-secondary rotate-[-2deg] mt-4">
+                    one sec, reading you...
+                </p>
+</div>
+<!-- Annotations (Voice of a Friend) -->
+<div class="absolute top-1/4 right-10 md:right-20 rotate-12 hidden lg:block">
+<p class="font-handwritten text-xl text-tertiary-container max-w-[150px]">
+                    The stars are moving fast tonight! ✨
+                </p>
+</div>
+<div class="absolute bottom-1/4 left-10 md:left-20 rotate-[-10deg] hidden lg:block">
+<p class="font-handwritten text-xl text-tertiary-container max-w-[180px]">
+                    Energy feels very cobalt blue today. 🌀
+                </p>
+</div>
+</div>
+<!-- Glassmorphic Tooltip (Depth Rule) -->
+<div class="absolute bottom-32 md:bottom-40 backdrop-blur-xl bg-surface/30 border-2 border-on-surface/5 p-6 rounded-xl max-w-sm text-center mx-4 brutalist-shadow">
+<p class="font-body text-sm font-bold uppercase tracking-widest text-on-surface-variant mb-2">Did you know?</p>
+<p class="font-headline text-lg italic leading-snug">
+                Your North Node is currently dancing with the spirit of the Oracle.
+            </p>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-4 bg-[#f5f5dc] dark:bg-[#1b1d0e] border-t-4 border-[#1b1d0e] shadow-[0_-8px_0_0_rgba(46,91,255,1)] rounded-t-full">
+<a class="flex flex-col items-center justify-center bg-[#2E5BFF] text-white rounded-full px-6 py-2 scale-110 -translate-y-2 rotate-2 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined">auto_fix_high</span>
+<span class="font-sans text-[12px] font-black uppercase tracking-widest mt-1">Oracle</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#1b1d0e] dark:text-[#f5f5dc] opacity-70 hover:bg-[#fe7e4f] hover:text-white transition-all p-2 rounded-xl" href="#">
+<span class="material-symbols-outlined">auto_stories</span>
+<span class="font-sans text-[12px] font-black uppercase tracking-widest mt-1">Readings</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#1b1d0e] dark:text-[#f5f5dc] opacity-70 hover:bg-[#fe7e4f] hover:text-white transition-all p-2 rounded-xl" href="#">
+<span class="material-symbols-outlined">star_half</span>
+<span class="font-sans text-[12px] font-black uppercase tracking-widest mt-1">Soul</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#1b1d0e] dark:text-[#f5f5dc] opacity-70 hover:bg-[#fe7e4f] hover:text-white transition-all p-2 rounded-xl" href="#">
+<span class="material-symbols-outlined">lock_open</span>
+<span class="font-sans text-[12px] font-black uppercase tracking-widest mt-1">Vault</span>
+</a>
+</nav>
+</body></html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&amp;family=Newsreader:ital,wght@0,400;0,700;1,400;1,700&amp;family=Manrope:wght@400;700;800&amp;family=Epilogue:wght@400;700;900&amp;family=Caveat:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container": "#efefd7",
+              "on-background": "#1b1d0e",
+              "tertiary-container": "#6d6d6d",
+              "on-tertiary-fixed-variant": "#474747",
+              "secondary-container": "#fe7e4f",
+              "error-container": "#ffdad6",
+              "surface-tint": "#124af0",
+              "tertiary": "#555555",
+              "on-tertiary": "#ffffff",
+              "surface-container-highest": "#e4e4cc",
+              "on-secondary": "#ffffff",
+              "primary": "#0040e0",
+              "primary-container": "#2e5bff",
+              "primary-fixed-dim": "#b8c3ff",
+              "surface-container-lowest": "#ffffff",
+              "surface-container-high": "#eaead1",
+              "on-primary-container": "#efefff",
+              "primary-fixed": "#dde1ff",
+              "surface-container-low": "#f5f5dc",
+              "on-error": "#ffffff",
+              "outline": "#747688",
+              "tertiary-fixed-dim": "#c6c6c6",
+              "tertiary-fixed": "#e2e2e2",
+              "surface-variant": "#e4e4cc",
+              "on-primary-fixed-variant": "#0035be",
+              "secondary-fixed": "#ffdbcf",
+              "on-secondary-fixed": "#380c00",
+              "on-surface-variant": "#434656",
+              "surface-bright": "#fbfbe2",
+              "secondary-fixed-dim": "#ffb59c",
+              "surface": "#fbfbe2",
+              "on-surface": "#1b1d0e",
+              "on-error-container": "#93000a",
+              "inverse-primary": "#b8c3ff",
+              "on-tertiary-container": "#f0f0f0",
+              "outline-variant": "#c4c5d9",
+              "on-secondary-container": "#6b1f00",
+              "error": "#ba1a1a",
+              "on-secondary-fixed-variant": "#822800",
+              "on-primary": "#ffffff",
+              "inverse-surface": "#303221",
+              "secondary": "#a43c12",
+              "on-primary-fixed": "#001356",
+              "background": "#fbfbe2",
+              "on-tertiary-fixed": "#1b1b1b",
+              "surface-dim": "#dbdcc3",
+              "inverse-on-surface": "#f2f2d9"
+            },
+            fontFamily: {
+              "headline": ["Newsreader", "serif"],
+              "body": ["Manrope", "sans-serif"],
+              "label": ["Epilogue", "sans-serif"],
+              "handwritten": ["Caveat", "cursive"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .text-glow {
+            text-shadow: 0 0 20px rgba(46, 91, 255, 0.4);
+        }
+        .chrome-text {
+            background: linear-gradient(180deg, #ffffff 0%, #b8c3ff 45%, #2e5bff 50%, #001356 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0px 4px 4px rgba(0,0,0,0.25));
+        }
+    </style>
+</head>
+<body class="bg-background font-body text-on-background overflow-hidden selection:bg-primary-container selection:text-white">
+<!-- Ethereal Background Canvas -->
+<div class="fixed inset-0 z-0">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="dreamy ethereal sky with soft pastel blue and pink clouds at dawn with a mystical hazy atmosphere" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCFy4KSQVB7jKeau1VI6U1ii9I4cPgamQtEHIZ7LRoTRnIVmw12k744DFrHO2VXuUs4yw-mNzP3NJWmJDdbKaNelZw4nDLsTDcCObfjm7SUYePQSfcugWGUYY1GsihTGsdZFnpOCq0VwCLHxB0JD-UWVHLVbAE0Y6ujZMrXabH9LvDYhNpkftCz150c5fgMlNTnHcM6BsvKM1t0RxvC8Wdvopcs0IcDDSlHkIroNcZD_N2cIlWxIH2bhpFiU-bnZZDZ24YTfCaY2cMS')">
+</div>
+<div class="absolute inset-0 bg-primary/10 backdrop-blur-[2px]"></div>
+</div>
+<!-- Main Splash Container -->
+<main class="relative z-10 min-h-screen flex flex-col items-center justify-center px-6 text-center">
+<!-- Floating 3D Objects Cluster -->
+<div class="absolute inset-0 pointer-events-none overflow-hidden">
+<!-- Crystal Ball -->
+<div class="absolute top-[15%] left-[10%] w-32 h-32 md:w-48 md:h-48 opacity-90 drop-shadow-2xl rotate-[-12deg]">
+<img class="w-full h-full object-contain" data-alt="a realistic 3D glass crystal ball glowing with internal purple and blue nebula light isolated on clear background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkN1DI_XdIxPhvtMdZBueCHS12nzXprK7U3lbB8Bdv4ZnSNm7e5pMag_Qbrsjdsst6srmHSbLwd64nA6AG_2s6TLFBJVLFuMCX8mMBoiV65GLw1pY9irAr-fo3vnEMI3FhzOGBu_u8NWa-XdVWmGHKYPLp_ZaT9VqJye64IUanDeTAbLCqJvsr8MfhZVgPf8n0lP5tK_f52bNZ7xBoMwsMgsewPQvRpQmQejGYwvJDLcpSHZMEv0-b0qlEO0TQRdVaiLdOCoBYX2_A"/>
+</div>
+<!-- Floating Stars -->
+<div class="absolute top-[20%] right-[15%] text-primary opacity-80 scale-150 rotate-12">
+<span class="material-symbols-outlined !text-6xl" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<!-- Mystical Eye -->
+<div class="absolute bottom-[25%] left-[12%] w-24 h-24 md:w-36 md:h-36 opacity-85 hover:rotate-6 transition-transform">
+<img class="w-full h-full object-contain rounded-full border-4 border-on-background shadow-xl" data-alt="a mystical stylized human eye with a galaxy iris and golden lashes floating against a soft sky" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkWvNnHx47Qn4xrzqeUo8_M_LHd7o7lQXp6_cqq1DeOquwZLpYxOzsegNzPWWWpUvRrtrHAmjD8NAW0tnIyatIuV_Z6KK0D8Qc9iUEPen02p_Pl8uW1jixJKje6SDoafEpf-c_ScFDqpoJezamkfYwSVzKrgel3qj9S9C6gfMTBO9G7vGTJ0m67Hosq6WnM6yapD2sYgVMS2HNDEHkjq76sg8P6WDHQ-d8MISrAeRkQAtn4S46otgDn0lIeVQENfkFrgYg5Qajw6sD"/>
+</div>
+<!-- Magic Candle -->
+<div class="absolute bottom-[15%] right-[10%] w-28 h-40 opacity-90 rotate-3">
+<img class="w-full h-full object-contain" data-alt="a burning purple esoteric candle with melting wax and a bright golden flame floating vertically" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-3IwMPIUrMMBn6SLO-lOKXz8zfsPYMhB9s_72MCjg8LXUjWepC1dDDcupuz2ditqCSnDx6zldIrDwvUJMFJkxOKKc2b4008z96jQLXtg5XTkRuWl0T7uVN6xWGW56R9tAZ9-kech5Wj2F2JOdDlOqEHjROhpbKy2XaIeloMr2wCYCPcpOrOkPV1uIraQQhFOfmKKso1PiVTG6RCzP4ofDKYjMsGu-b9NWlI7IOKDuZ88Va-7FMFkZJEhWnhTLx1TJuVajKZ_QUmGI"/>
+</div>
+</div>
+<!-- Hero Content Section -->
+<div class="relative z-20 flex flex-col items-center">
+<!-- 3D Chrome Branding -->
+<h1 class="text-[120px] md:text-[220px] leading-none font-bold tracking-tight chrome-text italic mb-2 select-none" style="font-family: 'Lora', serif;">
+                Lora
+            </h1>
+<!-- Handwritten Tagline -->
+<div class="relative -mt-6 md:-mt-12 mb-16 transform -rotate-3">
+<span class="font-handwritten text-3xl md:text-5xl text-secondary bg-surface-bright/80 backdrop-blur-sm px-4 py-1 rounded-full border-2 border-secondary shadow-sm">
+                    the map to you
+                </span>
+<!-- Doodle Arrow -->
+<div class="absolute -right-12 -bottom-8 text-on-background opacity-60">
+<span class="material-symbols-outlined !text-4xl rotate-45">south_east</span>
+</div>
+</div>
+<!-- "Sticker" Button -->
+<button class="group relative px-12 py-6 bg-primary-container text-white font-label font-black text-2xl uppercase tracking-[0.2em] border-4 border-on-background rounded-full shadow-[8px_8px_0px_0px_rgba(27,29,14,1)] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all active:scale-95">
+<span class="relative z-10">begin</span>
+<!-- Sparkle Icons inside Button -->
+<div class="absolute -top-4 -right-4 bg-secondary text-white p-2 rounded-full border-2 border-on-background group-hover:rotate-12 transition-transform">
+<span class="material-symbols-outlined !text-xl" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+</button>
+<!-- Bottom Annotation -->
+<p class="mt-12 font-body font-bold text-xs uppercase tracking-widest text-on-background opacity-40">
+                Shift your orbit. Find your center.
+            </p>
+</div>
+</main>
+<!-- Contextual "Easter Egg" UI elements -->
+<div class="fixed bottom-8 left-8 z-30 hidden md:block">
+<div class="bg-surface-container-high border-2 border-on-background p-4 rounded-xl rotate-[-2deg] shadow-lg max-w-[200px]">
+<p class="font-handwritten text-lg leading-tight">
+                "The stars don't lie, but they do whisper..."
+            </p>
+</div>
+</div>
+<div class="fixed top-8 right-8 z-30">
+<div class="flex items-center gap-4">
+<button class="w-12 h-12 bg-white/30 backdrop-blur-md rounded-full flex items-center justify-center border border-white/50 hover:bg-white/50 transition-colors">
+<span class="material-symbols-outlined text-on-background">volume_up</span>
+</button>
+<button class="w-12 h-12 bg-white/30 backdrop-blur-md rounded-full flex items-center justify-center border border-white/50 hover:bg-white/50 transition-colors">
+<span class="material-symbols-outlined text-on-background">info</span>
+</button>
+</div>
+</div>
+</body></html>

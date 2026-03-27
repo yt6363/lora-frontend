@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&amp;family=Newsreader:ital,wght@0,400;0,700;1,400;1,700&amp;family=Manrope:wght@400;700;800&amp;family=Epilogue:wght@400;700&amp;family=Reenie+Beanie&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container": "#efefd7",
+              "on-background": "#1b1d0e",
+              "tertiary-container": "#6d6d6d",
+              "on-tertiary-fixed-variant": "#474747",
+              "secondary-container": "#fe7e4f",
+              "error-container": "#ffdad6",
+              "surface-tint": "#124af0",
+              "tertiary": "#555555",
+              "on-tertiary": "#ffffff",
+              "surface-container-highest": "#e4e4cc",
+              "on-secondary": "#ffffff",
+              "primary": "#0040e0",
+              "primary-container": "#2e5bff",
+              "primary-fixed-dim": "#b8c3ff",
+              "surface-container-lowest": "#ffffff",
+              "surface-container-high": "#eaead1",
+              "on-primary-container": "#efefff",
+              "primary-fixed": "#dde1ff",
+              "surface-container-low": "#f5f5dc",
+              "on-error": "#ffffff",
+              "outline": "#747688",
+              "tertiary-fixed-dim": "#c6c6c6",
+              "tertiary-fixed": "#e2e2e2",
+              "surface-variant": "#e4e4cc",
+              "on-primary-fixed-variant": "#0035be",
+              "secondary-fixed": "#ffdbcf",
+              "on-secondary-fixed": "#380c00",
+              "on-surface-variant": "#434656",
+              "surface-bright": "#fbfbe2",
+              "secondary-fixed-dim": "#ffb59c",
+              "surface": "#fbfbe2",
+              "on-surface": "#1b1d0e",
+              "on-error-container": "#93000a",
+              "inverse-primary": "#b8c3ff",
+              "on-tertiary-container": "#f0f0f0",
+              "outline-variant": "#c4c5d9",
+              "on-secondary-container": "#6b1f00",
+              "error": "#ba1a1a",
+              "on-secondary-fixed-variant": "#822800",
+              "on-primary": "#ffffff",
+              "inverse-surface": "#303221",
+              "secondary": "#a43c12",
+              "on-primary-fixed": "#001356",
+              "background": "#fbfbe2",
+              "on-tertiary-fixed": "#1b1b1b",
+              "surface-dim": "#dbdcc3",
+              "inverse-on-surface": "#f2f2d9"
+            },
+            fontFamily: {
+              "headline": ["Newsreader", "serif"],
+              "body": ["Manrope", "sans-serif"],
+              "label": ["Epilogue", "sans-serif"],
+              "handwritten": ["'Reenie Beanie'", "cursive"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .collage-item { transition: transform 0.3s ease; }
+      .collage-item:hover { transform: scale(1.02) rotate(0deg) !important; }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 py-4 bg-transparent">
+<div class="text-4xl font-bold tracking-tight text-[#2E5BFF] italic" style="font-family: 'Lora', serif;">Lora</div>
+<div class="flex gap-4">
+<button class="text-[#2E5BFF] hover:rotate-2 hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">account_circle</span>
+</button>
+<button class="text-[#2E5BFF] hover:rotate-2 hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">auto_awesome</span>
+</button>
+</div>
+</header>
+<main class="overflow-x-hidden">
+<!-- Hero Section -->
+<section class="min-h-screen bg-primary-container flex flex-col justify-center items-center relative px-6 pt-24 overflow-hidden">
+<!-- Floating Decorative Element -->
+<div class="absolute -top-10 -right-10 w-64 h-64 opacity-20 pointer-events-none">
+<img class="w-full h-full object-contain" data-alt="3D iridescent crystal cluster with sharp edges and soft spectral light reflections on a blue background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbMjOkLYgdw3SjB0JDP5zYns2ep9izR5jdKiktbOfu5aJC8D7vaxjKko2a0TzTxLktRPcXuH3Luzu4RCoXySdcM1fw7MD1sIwpYmKHJ2PUSIMZoGZz3wKbu642ELwmbHFe_-Wpedg3ZpwG5jITI-gN5nz1970_iTW6ZlkyhXIsOjA_6j7TrBCdf7ROlFVVlQckz4R9Oy-Kge0bmR7p8G8OKG9rDrhKbGuh7Ku_tIEzG-xYqr-JGovjejXQ-LTLVGF5gyHGsvHrQwSE"/>
+</div>
+<div class="relative z-10 text-center max-w-4xl">
+<h1 class="flex flex-wrap justify-center items-baseline gap-x-4">
+<span class="font-headline italic text-7xl md:text-9xl text-white">The</span>
+<span class="font-body font-black text-6xl md:text-8xl text-on-primary-container uppercase tracking-tighter">Radiant</span>
+<span class="font-handwritten text-5xl md:text-7xl text-secondary-container rotate-[-4deg] block w-full md:w-auto">Truth</span>
+<span class="font-headline italic text-7xl md:text-9xl text-white">of Avery</span>
+</h1>
+<p class="font-handwritten text-3xl md:text-5xl text-white mt-12 rotate-[-2deg] opacity-90">
+                    "you're the person everyone calls when it gets real."
+                </p>
+</div>
+<!-- Absolute positioned sticker -->
+<div class="absolute bottom-12 right-12 bg-secondary text-white font-label font-bold px-6 py-3 rounded-full rotate-6 shadow-xl border-2 border-on-surface">
+                SOUL ARCHETYPE
+            </div>
+</section>
+<!-- The Reading Text Section -->
+<section class="py-32 px-6 max-w-3xl mx-auto space-y-16 relative">
+<div class="font-headline italic text-4xl md:text-5xl text-primary leading-tight">
+                You lead with discipline. People see your patience first, but underneath there's a quiet intensity that drives everything you do. 
+            </div>
+<div class="space-y-12 text-xl md:text-2xl font-body leading-relaxed text-on-surface/80">
+<p>
+                    There is a specific kind of gravity to your presence. While others are busy filling the room with noise, you are the one holding the architecture of the moment together. You don't perform for attention; you command it through consistency. 
+                </p>
+<!-- Injected Art -->
+<div class="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] my-24 group">
+<img class="w-full h-[614px] object-cover" data-alt="cinematic wide shot of a glowing orange and purple sunset over a misty mountain range with deep shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkPAwrtIuczf43pENVBss9mNwVuwnoJVPjolc7VDtw2iGqqDBjBQvN4I1EtD91I9a3FPxlj7B4yKFKjmwZJBIND0xIZUSEQvJQGHUjLODJPVhwsuVfDJ1wxOdvxkYNvosI2gotJfi1GjdHH6YIXo03oRos2GuvTMuPkrOmRrUmI1u03fo93F120k6POzj97Hg1P6eVWnH0Ky6yCbOAv0WfRyjzyLxr9VIBpkl-r34PR7u0BsMs_7CyGCBJB7Rfh7Z2GyMnSgkHgTqw"/>
+<div class="absolute top-1/4 left-10 md:left-1/4 font-handwritten text-4xl md:text-6xl text-white rotate-[-5deg] drop-shadow-lg">
+                        this is so you!
+                    </div>
+<div class="absolute bottom-10 right-10">
+<span class="material-symbols-outlined text-white text-8xl opacity-40" style="font-variation-settings: 'FILL' 1;">star_half</span>
+</div>
+</div>
+<p>
+                    Your emotional landscape is vast but private. You curate your inner world with the same precision you apply to your professional life. This makes your occasional outbursts of humor or passion all the more electric—like a sudden flash of lightning across a calm sea.
+                </p>
+<p>
+                    In relationships, you are the anchor. You provide the safety net that allows others to be chaotic. But remember, an anchor that never moves becomes part of the seabed. You are allowed to drift, to change course, and to be the one who needs holding once in a while.
+                </p>
+</div>
+</section>
+<!-- Energy Snapshot Section -->
+<section class="bg-surface-container-low py-32 px-6 overflow-hidden">
+<h2 class="font-headline italic text-5xl md:text-7xl text-center mb-20 text-on-background">Energy Snapshot</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+<!-- Card 1 -->
+<div class="bg-surface p-10 border-4 border-on-surface shadow-[8px_8px_0_0_#1b1d0e] rotate-[-1deg] hover:rotate-0 transition-all">
+<span class="font-body font-black text-5xl text-primary block mb-6 uppercase tracking-tighter">Discipline</span>
+<p class="font-body text-lg leading-snug">The silent machinery that turns your dreams into actual maps.</p>
+</div>
+<!-- Card 2 -->
+<div class="bg-secondary-container p-10 border-4 border-on-surface shadow-[8px_8px_0_0_#1b1d0e] rotate-[2deg] hover:rotate-0 transition-all">
+<span class="font-body font-black text-5xl text-white block mb-6 uppercase tracking-tighter">Intensity</span>
+<p class="font-body text-lg leading-snug text-on-secondary-container">A fire that doesn't burn out; it just refines what it touches.</p>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface p-10 border-4 border-on-surface shadow-[8px_8px_0_0_#1b1d0e] rotate-[-2deg] hover:rotate-0 transition-all">
+<span class="font-body font-black text-5xl text-primary block mb-6 uppercase tracking-tighter">Gravity</span>
+<p class="font-body text-lg leading-snug">The natural weight of your words that anchors every room you enter.</p>
+</div>
+</div>
+</section>
+<!-- Your Number Says Section -->
+<section class="bg-on-background text-surface-bright py-40 px-6 relative overflow-hidden">
+<div class="max-w-4xl mx-auto text-center relative z-10">
+<h3 class="font-headline italic text-4xl md:text-6xl mb-12">Your number says...</h3>
+<p class="font-body text-2xl md:text-4xl leading-relaxed opacity-90">
+                    The digits you carry broadcast a frequency of <span class="text-secondary-container font-black">STABILITY (8)</span> and <span class="text-primary-container font-black">WISDOM (1)</span>. Your digital aura acts as a filter, naturally repelling chaos before it even hits your inbox.
+                </p>
+<div class="mt-20 flex justify-center gap-8 opacity-20">
+<span class="material-symbols-outlined text-9xl">lock_open</span>
+<span class="material-symbols-outlined text-9xl" style="font-variation-settings: 'FILL' 1;">auto_fix_high</span>
+<span class="material-symbols-outlined text-9xl">star_half</span>
+</div>
+</div>
+<!-- Absolute Moon Decoration -->
+<div class="absolute -bottom-20 -left-20 w-80 h-80 opacity-30">
+<img class="w-full h-full object-contain" data-alt="hyper-realistic 3D render of a glowing crescent moon with detailed crater textures floating in dark space" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGFDSEdY6plVXNN0G21DSQ481OgEkz6al5814l9QEI_IH045JksWD05mGIC6hVIzsuaAF1DZAiEh8nHnQwL2lXfSiILvvtIDzyCALaSend7VtLfJ1xma85sQunCXso5pHJcjOyKSevIrpC-d0k5eEY-JHp0w2C7AI0fHLjgdFAQxSaAFi3s3vk_NRJOGFh9Lu-YXlqHJu7cH8ALqHYDnkj4bMB4d_VwfFNT3-h0vV-6M5rS3ieDjBvoyOTR_WR02Xnu0GlIqYUtx_4"/>
+</div>
+</section>
+<!-- Bottom Call to Action -->
+<section class="py-32 px-6 flex flex-col items-center justify-center bg-surface">
+<div class="relative group cursor-pointer">
+<div class="absolute -inset-4 bg-primary-container rounded-full blur-2xl opacity-20 group-hover:opacity-40 transition-opacity"></div>
+<button class="relative bg-primary text-white border-4 border-on-surface px-12 py-6 rounded-full font-body font-black text-2xl uppercase tracking-widest hover:scale-110 hover:rotate-2 transition-all active:scale-90">
+                    Read Another
+                </button>
+</div>
+<div class="mt-12 flex flex-col items-center">
+<div class="font-handwritten text-4xl text-on-surface rotate-[-3deg]">
+                    thanks for letting us in
+                </div>
+<div class="mt-4">
+<span class="material-symbols-outlined text-secondary text-5xl">favorite</span>
+</div>
+</div>
+</section>
+<!-- Spacer for Bottom Nav -->
+<div class="h-32"></div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-4 bg-[#f5f5dc] dark:bg-[#1b1d0e] rounded-t-full border-t-4 border-[#1b1d0e] shadow-[0_-8px_0_0_rgba(46,91,255,1)]">
+<a class="flex flex-col items-center justify-center text-[#1b1d0e] dark:text-[#f5f5dc] opacity-70 hover:bg-[#fe7e4f] hover:text-white transition-all" href="#">
+<span class="material-symbols-outlined">auto_fix_high</span>
+<span class="font-sans text-[12px] font-black uppercase tracking-widest">Oracle</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-[#2E5BFF] text-white rounded-full px-6 py-2 scale-110 -translate-y-2 rotate-2 active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">auto_stories</span>
+<span class="font-sans text-[12px] font-black uppercase tracking-widest">Readings</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#1b1d0e] dark:text-[#f5f5dc] opacity-70 hover:bg-[#fe7e4f] hover:text-white transition-all" href="#">
+<span class="material-symbols-outlined">star_half</span>
+<span class="font-sans text-[12px] font-black uppercase tracking-widest">Soul</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#1b1d0e] dark:text-[#f5f5dc] opacity-70 hover:bg-[#fe7e4f] hover:text-white transition-all" href="#">
+<span class="material-symbols-outlined">lock_open</span>
+<span class="font-sans text-[12px] font-black uppercase tracking-widest">Vault</span>
+</a>
+</nav>
+</body></html>
