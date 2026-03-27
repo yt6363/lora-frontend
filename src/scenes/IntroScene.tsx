@@ -14,7 +14,6 @@ const CANDLE =
 
 // Smooth easing — no bounce
 const SMOOTH: [number, number, number, number] = [0.25, 0.1, 0.25, 1]
-const EXPO_OUT: [number, number, number, number] = [0.16, 1, 0.3, 1]
 const ENTER_SMOOTH = { duration: 0.7, ease: SMOOTH }
 
 interface IntroSceneProps {
