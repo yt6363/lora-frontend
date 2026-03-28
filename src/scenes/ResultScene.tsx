@@ -85,7 +85,7 @@ export default function ResultScene({ name, reading, onReset }: ResultSceneProps
 
       <main className="overflow-x-hidden">
         {/* ─── HERO — match Stitch line 98 ─── */}
-        <section className="min-h-screen bg-primary-container flex flex-col justify-center items-center relative px-6 pt-24 overflow-hidden">
+        <section className="min-h-screen bg-primary-container flex flex-col justify-center items-center relative px-4 md:px-6 pt-20 md:pt-24 overflow-hidden">
           <div className="absolute -top-10 -right-10 w-64 h-64 opacity-20 pointer-events-none">
             <img src={CRYSTAL_CLUSTER} alt="" className="w-full h-full object-contain" />
           </div>
@@ -121,22 +121,22 @@ export default function ResultScene({ name, reading, onReset }: ResultSceneProps
         {/* ─── THE READING — match Stitch line 120: py-32 px-6 max-w-3xl ─── */}
         {revealed >= 1 && (
           <motion.section
-            className="py-32 px-6 max-w-3xl mx-auto space-y-16 relative"
+            className="py-16 px-4 md:py-32 md:px-6 max-w-3xl mx-auto space-y-10 md:space-y-16 relative"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.4 }}
           >
-            <div className="font-headline italic text-4xl md:text-5xl text-primary leading-tight" style={{ textWrap: 'balance' }}>
+            <div className="font-headline italic text-2xl md:text-5xl text-primary leading-tight" style={{ textWrap: 'balance' }}>
               {reading.lead}
             </div>
 
-            <div className="space-y-12 text-xl md:text-2xl font-body leading-relaxed text-on-surface/80">
+            <div className="space-y-8 md:space-y-12 text-lg md:text-2xl font-body leading-relaxed text-on-surface/80">
               <p>{reading.body1}</p>
 
               {/* Cinematic image break — match Stitch line 129 */}
               <div className="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] my-24 group">
                 <img src={SUNSET_IMG} alt="" className="w-full h-[300px] md:h-[614px] object-cover" />
-                <div className="absolute top-1/4 left-10 md:left-1/4 font-handwritten text-4xl md:text-6xl text-white rotate-[-5deg] drop-shadow-lg">
+                <div className="absolute top-1/4 left-6 md:left-1/4 font-handwritten text-2xl md:text-6xl text-white rotate-[-5deg] drop-shadow-lg">
                   this is so you!
                 </div>
                 <div className="absolute bottom-10 right-10">
@@ -158,7 +158,7 @@ export default function ResultScene({ name, reading, onReset }: ResultSceneProps
         {/* ─── ENERGY SNAPSHOT — match Stitch line 147: py-32 px-6 ─── */}
         {revealed >= 2 && (
           <motion.section
-            className="bg-surface-container-low py-32 px-6 overflow-hidden"
+            className="bg-surface-container-low py-16 px-4 md:py-32 md:px-6 overflow-hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.4 }}
@@ -166,7 +166,7 @@ export default function ResultScene({ name, reading, onReset }: ResultSceneProps
             <h2 className="font-headline italic text-4xl md:text-7xl text-center mb-12 md:mb-20 text-on-background">
               Energy Snapshot
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
               {reading.energies.map(([title, desc], i) => {
                 const isMiddle = i === 1
                 const rotation = i === 0
@@ -177,15 +177,15 @@ export default function ResultScene({ name, reading, onReset }: ResultSceneProps
                 return (
                   <div
                     key={title}
-                    className={`p-10 border-4 border-on-surface shadow-[8px_8px_0_0_#1b1d0e] ${rotation} hover:rotate-0 transition-all ${isMiddle ? 'bg-secondary-container' : 'bg-surface'}`}
+                    className={`p-6 md:p-10 border-4 border-on-surface shadow-[8px_8px_0_0_#1b1d0e] ${rotation} hover:rotate-0 transition-all ${isMiddle ? 'bg-secondary-container' : 'bg-surface'}`}
                   >
                     <span
-                      className={`font-body font-black text-5xl block mb-6 uppercase tracking-tighter ${isMiddle ? 'text-white' : 'text-primary'}`}
+                      className={`font-body font-black text-2xl md:text-5xl block mb-4 md:mb-6 uppercase tracking-tighter break-words ${isMiddle ? 'text-white' : 'text-primary'}`}
                     >
                       {title}
                     </span>
                     <p
-                      className={`font-body text-lg leading-snug ${isMiddle ? 'text-on-secondary-container' : ''}`}
+                      className={`font-body text-base md:text-lg leading-snug ${isMiddle ? 'text-on-secondary-container' : ''}`}
                     >
                       {desc}
                     </p>
@@ -199,7 +199,7 @@ export default function ResultScene({ name, reading, onReset }: ResultSceneProps
         {/* ─── YOUR NUMBER SAYS — match Stitch line 168: py-40 px-6 ─── */}
         {revealed >= 3 && (
           <motion.section
-            className="bg-on-background text-surface-bright py-40 px-6 relative overflow-hidden"
+            className="bg-on-background text-surface-bright py-20 px-4 md:py-40 md:px-6 relative overflow-hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.4 }}
@@ -209,15 +209,15 @@ export default function ResultScene({ name, reading, onReset }: ResultSceneProps
               <p className="font-body text-xl md:text-4xl leading-relaxed opacity-90">
                 {reading.numberSays}
               </p>
-              <div className="mt-20 flex justify-center gap-8 opacity-20">
-                <span className="material-symbols-outlined text-9xl">lock_open</span>
+              <div className="mt-12 md:mt-20 flex justify-center gap-4 md:gap-8 opacity-20">
+                <span className="material-symbols-outlined text-6xl md:text-9xl">lock_open</span>
                 <span
-                  className="material-symbols-outlined text-9xl"
+                  className="material-symbols-outlined text-6xl md:text-9xl"
                   style={{ fontVariationSettings: "'FILL' 1" }}
                 >
                   auto_fix_high
                 </span>
-                <span className="material-symbols-outlined text-9xl">star_half</span>
+                <span className="material-symbols-outlined text-6xl md:text-9xl">star_half</span>
               </div>
             </div>
             <div className="absolute -bottom-20 -left-20 w-80 h-80 opacity-30">
@@ -251,26 +251,26 @@ export default function ResultScene({ name, reading, onReset }: ResultSceneProps
         {/* ─── PREMIUM CONTENT ─── */}
         {unlocked && premiumRevealed >= 1 && (
           <motion.section
-            className="py-24 px-6 bg-surface-container-low"
+            className="py-16 px-4 md:py-24 md:px-6 bg-surface-container-low"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.4 }}
           >
-            <h2 className="font-headline italic text-5xl md:text-7xl text-center mb-16 text-on-background">
+            <h2 className="font-headline italic text-3xl md:text-7xl text-center mb-10 md:mb-16 text-on-background">
               Deeper Truths
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-5xl mx-auto">
               {reading.premium.map(([title, text], i) => {
                 if (premiumRevealed < i + 1) return null
                 return (
                   <motion.div
                     key={i}
-                    className={`p-8 border-4 border-on-surface shadow-[8px_8px_0_0_#1b1d0e] ${ROTATIONS[i % ROTATIONS.length]} hover:rotate-0 transition-all ${CARD_BG[i % CARD_BG.length]}`}
+                    className={`p-5 md:p-8 border-4 border-on-surface shadow-[8px_8px_0_0_#1b1d0e] ${ROTATIONS[i % ROTATIONS.length]} hover:rotate-0 transition-all ${CARD_BG[i % CARD_BG.length]}`}
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.35 }}
                   >
-                    <span className={`font-body font-black text-2xl block mb-4 uppercase tracking-tighter ${CARD_TEXT[i % CARD_TEXT.length]}`}>
+                    <span className={`font-body font-black text-xl md:text-2xl block mb-3 md:mb-4 uppercase tracking-tighter ${CARD_TEXT[i % CARD_TEXT.length]}`}>
                       {title}
                     </span>
                     <p className={`font-body text-lg leading-relaxed ${i % CARD_BG.length === 3 ? 'text-on-secondary-container' : ''}`}>
