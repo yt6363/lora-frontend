@@ -78,28 +78,28 @@ export default function InputScene({ onSubmit }: InputSceneProps) {
               <div className="w-full h-full bg-primary-container relative overflow-hidden flex flex-col items-center justify-center px-6">
                 {/* Floating 3D Objects — stagger in after cloud */}
                 <motion.div
-                  className="absolute top-[10%] left-[15%] rotate-[-12deg] z-10 opacity-90 hover:scale-110 transition-transform"
+                  className="absolute top-[5%] left-[5%] md:top-[10%] md:left-[15%] rotate-[-12deg] z-10 opacity-90 hover:scale-110 transition-transform"
                   initial={{ opacity: 0, y: 40 }}
                   animate={{ opacity: 0.9, y: 0 }}
                   transition={{ delay: 0.3, duration: 0.6, ease: 'easeOut' }}
                 >
-                  <img alt="Crystal Star" className="w-32 md:w-48 h-auto drop-shadow-2xl" src={CRYSTAL_STAR_IMG} />
+                  <img alt="Crystal Star" className="w-20 md:w-48 h-auto drop-shadow-2xl" src={CRYSTAL_STAR_IMG} />
                 </motion.div>
                 <motion.div
-                  className="absolute bottom-[15%] right-[10%] rotate-[15deg] z-10 hover:rotate-[25deg] transition-all duration-500"
+                  className="absolute bottom-[8%] right-[5%] md:bottom-[15%] md:right-[10%] rotate-[15deg] z-10 hover:rotate-[25deg] transition-all duration-500"
                   initial={{ opacity: 0, y: 40 }}
                   animate={{ opacity: 0.8, y: 0 }}
                   transition={{ delay: 0.5, duration: 0.6, ease: 'easeOut' }}
                 >
-                  <img alt="Disco Ball" className="w-40 md:w-64 h-auto drop-shadow-[0_20px_50px_rgba(0,0,0,0.3)]" src={DISCO_BALL_IMG} />
+                  <img alt="Disco Ball" className="w-24 md:w-64 h-auto drop-shadow-[0_20px_50px_rgba(0,0,0,0.3)]" src={DISCO_BALL_IMG} />
                 </motion.div>
                 <motion.div
-                  className="absolute top-[20%] right-[20%] rotate-[5deg] z-0 pointer-events-none"
+                  className="absolute top-[12%] right-[10%] md:top-[20%] md:right-[20%] rotate-[5deg] z-0 pointer-events-none"
                   initial={{ opacity: 0, scale: 0.5 }}
                   animate={{ opacity: 0.4, scale: 1 }}
                   transition={{ delay: 0.7, duration: 0.5, ease: 'easeOut' }}
                 >
-                  <span className="material-symbols-outlined text-white text-[120px] lg:text-[200px]" style={{ fontVariationSettings: "'FILL' 0" }}>
+                  <span className="material-symbols-outlined text-white text-[60px] md:text-[120px] lg:text-[200px]" style={{ fontVariationSettings: "'FILL' 0" }}>
                     auto_awesome
                   </span>
                 </motion.div>
@@ -119,10 +119,10 @@ export default function InputScene({ onSubmit }: InputSceneProps) {
                     transition={enterSpring}
                     style={{ willChange: 'transform, opacity' }}
                   >
-                    <span className="font-handwritten text-white text-5xl md:text-7xl block rotate-[-3deg] -mb-4 tracking-wider">
+                    <span className="font-handwritten text-white text-3xl md:text-7xl block rotate-[-3deg] -mb-2 md:-mb-4 tracking-wider">
                       what's
                     </span>
-                    <h1 className="font-headline italic text-white text-7xl md:text-9xl font-bold tracking-tighter leading-none">
+                    <h1 className="font-headline italic text-white text-5xl md:text-9xl font-bold tracking-tighter leading-none">
                       your name?
                     </h1>
                   </motion.div>
@@ -149,13 +149,13 @@ export default function InputScene({ onSubmit }: InputSceneProps) {
                         onKeyDown={(e) => handleKeyDown(e, handleNameSubmit)}
                         placeholder="Type it here..."
                         autoFocus
-                        className="w-full bg-surface-container-low border-none text-on-background font-headline italic text-3xl md:text-5xl px-8 py-10 rounded-none md:rounded-full shadow-[12px_12px_0px_0px_rgba(27,29,14,1)] focus:ring-4 focus:ring-secondary-container transition-all placeholder:text-outline-variant outline-none"
+                        className="w-full bg-surface-container-low border-none text-on-background font-headline italic text-2xl md:text-5xl px-6 py-6 md:px-8 md:py-10 rounded-none md:rounded-full shadow-[12px_12px_0px_0px_rgba(27,29,14,1)] focus:ring-4 focus:ring-secondary-container transition-all placeholder:text-outline-variant outline-none pr-24 md:pr-32"
                       />
                       {/* Sticker CTA Button */}
                       <button
                         onClick={handleNameSubmit}
                         disabled={!name.trim()}
-                        className="absolute right-4 top-1/2 -translate-y-1/2 bg-primary text-white font-label font-black uppercase tracking-widest px-8 py-4 rounded-full border-2 border-on-background shadow-[4px_4px_0px_0px_rgba(27,29,14,1)] hover:rotate-2 hover:scale-110 active:scale-90 transition-all z-30 disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer"
+                        className="absolute right-3 md:right-4 top-1/2 -translate-y-1/2 bg-primary text-white font-label font-black uppercase tracking-widest px-5 py-3 md:px-8 md:py-4 text-sm md:text-base rounded-full border-2 border-on-background shadow-[4px_4px_0px_0px_rgba(27,29,14,1)] hover:rotate-2 hover:scale-110 active:scale-90 transition-all z-30 disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer"
                       >
                         NEXT
                       </button>
@@ -181,8 +181,8 @@ export default function InputScene({ onSubmit }: InputSceneProps) {
                 </motion.div>
 
                 {/* Signature "Voice of a Friend" Margin Note */}
-                <div className="absolute bottom-10 left-10 md:left-20 max-w-[200px] pointer-events-none">
-                  <p className="font-handwritten text-white text-2xl rotate-[5deg] leading-tight">
+                <div className="absolute bottom-6 left-6 md:bottom-10 md:left-20 max-w-[160px] md:max-w-[200px] pointer-events-none hidden md:block">
+                  <p className="font-handwritten text-white text-xl md:text-2xl rotate-[5deg] leading-tight">
                     "A name is the first key to the vault of the soul..."
                     <span className="block text-right mt-2">&mdash; Lora</span>
                   </p>
@@ -251,7 +251,7 @@ export default function InputScene({ onSubmit }: InputSceneProps) {
                     <p className="font-body text-xl uppercase tracking-[0.2em] font-bold text-on-surface mb-2">
                       and your
                     </p>
-                    <h1 className="font-headline italic text-7xl md:text-9xl font-bold leading-none text-on-surface">
+                    <h1 className="font-headline italic text-5xl md:text-9xl font-bold leading-none text-on-surface">
                       number?
                     </h1>
                   </motion.div>
@@ -288,7 +288,7 @@ export default function InputScene({ onSubmit }: InputSceneProps) {
                       onKeyDown={(e) => handleKeyDown(e, handlePhoneSubmit)}
                       placeholder="dial into the cosmos..."
                       autoFocus
-                      className="w-full bg-surface-container-low text-on-surface text-3xl md:text-4xl font-headline italic p-8 rounded-none border-4 border-on-background focus:ring-0 focus:border-primary placeholder:opacity-40 text-center tracking-widest outline-none"
+                      className="w-full bg-surface-container-low text-on-surface text-2xl md:text-4xl font-headline italic p-5 md:p-8 rounded-none border-4 border-on-background focus:ring-0 focus:border-primary placeholder:opacity-40 text-center tracking-widest outline-none"
                     />
                     {/* Small doodle underneath */}
                     <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-48 h-2 bg-on-background rounded-full opacity-10" />
@@ -298,7 +298,7 @@ export default function InputScene({ onSubmit }: InputSceneProps) {
                   <motion.button
                     onClick={handlePhoneSubmit}
                     disabled={!phone.trim()}
-                    className="group relative bg-primary-container text-on-primary-container font-label font-black text-2xl md:text-3xl uppercase py-6 px-12 rounded-full border-4 border-on-background brutalist-shadow hover:scale-105 active:scale-95 transition-all disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer"
+                    className="group relative bg-primary-container text-on-primary-container font-label font-black text-xl md:text-3xl uppercase py-4 px-8 md:py-6 md:px-12 rounded-full border-4 border-on-background brutalist-shadow hover:scale-105 active:scale-95 transition-all disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer"
                     variants={childFadeUp}
                     transition={enterSpring}
                     style={{ willChange: 'transform, opacity' }}

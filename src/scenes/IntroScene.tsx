@@ -55,7 +55,7 @@ export default function IntroScene({ onComplete }: IntroSceneProps) {
           {/* Tarot Card — top left */}
           <motion.div
             layout={false}
-            className="absolute top-[12%] left-[6%] w-28 h-44 md:w-40 md:h-64 drop-shadow-2xl rotate-[-8deg]"
+            className="absolute top-[8%] left-[3%] w-20 h-32 md:w-40 md:h-64 drop-shadow-2xl rotate-[-8deg]"
             style={{ willChange: 'transform, opacity' }}
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 0.9, y: 0 }}
@@ -71,14 +71,14 @@ export default function IntroScene({ onComplete }: IntroSceneProps) {
           {/* Floating Star */}
           <motion.div
             layout={false}
-            className="absolute top-[20%] right-[15%] text-primary"
+            className="absolute top-[10%] right-[8%] md:top-[20%] md:right-[15%] text-primary"
             style={{ willChange: 'transform, opacity', rotate: 12 }}
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 0.8, scale: 1.5 }}
             transition={{ delay: 0.36, ...ENTER_SMOOTH }}
           >
             <span
-              className="material-symbols-outlined !text-6xl"
+              className="material-symbols-outlined !text-4xl md:!text-6xl"
               style={{ fontVariationSettings: "'FILL' 1", filter: 'drop-shadow(0 0 15px rgba(46,91,255,0.5))' }}
             >
               star
@@ -88,7 +88,7 @@ export default function IntroScene({ onComplete }: IntroSceneProps) {
           {/* Celestial Orb — bottom left */}
           <motion.div
             layout={false}
-            className="absolute bottom-[22%] left-[10%] w-28 h-28 md:w-44 md:h-44 drop-shadow-2xl"
+            className="absolute bottom-[18%] left-[5%] w-20 h-20 md:bottom-[22%] md:left-[10%] md:w-44 md:h-44 drop-shadow-2xl"
             style={{ willChange: 'transform, opacity' }}
             initial={{ opacity: 0, scale: 0.6 }}
             animate={{ opacity: 0.85, scale: 1 }}
@@ -104,7 +104,7 @@ export default function IntroScene({ onComplete }: IntroSceneProps) {
           {/* Healing Quote — bottom right */}
           <motion.div
             layout={false}
-            className="absolute bottom-[14%] right-[6%] w-32 h-32 md:w-44 md:h-44 rotate-[3deg] drop-shadow-2xl"
+            className="absolute bottom-[18%] right-[3%] w-24 h-24 md:bottom-[14%] md:right-[6%] md:w-44 md:h-44 rotate-[3deg] drop-shadow-2xl"
             style={{ willChange: 'transform, opacity' }}
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 0.9, y: 0 }}
@@ -156,8 +156,8 @@ export default function IntroScene({ onComplete }: IntroSceneProps) {
                   the map to you
                 </span>
                 {/* Doodle Arrow */}
-                <div className="absolute -right-12 -bottom-8 text-on-background opacity-60">
-                  <span className="material-symbols-outlined !text-4xl rotate-45">
+                <div className="absolute -right-8 md:-right-12 -bottom-8 text-on-background opacity-60">
+                  <span className="material-symbols-outlined !text-3xl md:!text-4xl rotate-45">
                     south_east
                   </span>
                 </div>
@@ -171,7 +171,7 @@ export default function IntroScene({ onComplete }: IntroSceneProps) {
               <motion.button
                 layout={false}
                 onClick={handleBegin}
-                className="group relative px-12 py-6 bg-primary-container text-white font-label font-black text-2xl uppercase tracking-[0.2em] border-4 border-on-background rounded-full shadow-[8px_8px_0px_0px_rgba(27,29,14,1)] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all active:scale-95 cursor-pointer"
+                className="group relative px-8 py-4 md:px-12 md:py-6 bg-primary-container text-white font-label font-black text-xl md:text-2xl uppercase tracking-[0.2em] border-4 border-on-background rounded-full shadow-[8px_8px_0px_0px_rgba(27,29,14,1)] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all active:scale-95 cursor-pointer"
                 style={{ willChange: 'transform, opacity' }}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -233,13 +233,13 @@ export default function IntroScene({ onComplete }: IntroSceneProps) {
       </AnimatePresence>
 
       {/* ── Top-right controls ── */}
-      <div className="fixed top-8 right-8 z-30">
-        <div className="flex items-center gap-4">
-          <button aria-label="Toggle sound" className="w-12 h-12 bg-white/30 backdrop-blur-md rounded-full flex items-center justify-center border border-white/50 hover:bg-white/50 transition-colors cursor-pointer">
-            <span className="material-symbols-outlined text-on-background">volume_up</span>
+      <div className="fixed top-4 right-4 md:top-8 md:right-8 z-30 safe-area-top">
+        <div className="flex items-center gap-2 md:gap-4">
+          <button aria-label="Toggle sound" className="w-10 h-10 md:w-12 md:h-12 bg-white/30 backdrop-blur-md rounded-full flex items-center justify-center border border-white/50 hover:bg-white/50 transition-colors cursor-pointer">
+            <span className="material-symbols-outlined text-on-background text-xl md:text-2xl">volume_up</span>
           </button>
-          <button aria-label="About LORA" className="w-12 h-12 bg-white/30 backdrop-blur-md rounded-full flex items-center justify-center border border-white/50 hover:bg-white/50 transition-colors cursor-pointer">
-            <span className="material-symbols-outlined text-on-background">info</span>
+          <button aria-label="About LORA" className="w-10 h-10 md:w-12 md:h-12 bg-white/30 backdrop-blur-md rounded-full flex items-center justify-center border border-white/50 hover:bg-white/50 transition-colors cursor-pointer">
+            <span className="material-symbols-outlined text-on-background text-xl md:text-2xl">info</span>
           </button>
         </div>
       </div>

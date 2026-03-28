@@ -96,24 +96,24 @@ export default function ResultScene({ name, reading, onReset }: ResultSceneProps
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <h1 className="flex flex-wrap justify-center items-baseline gap-x-4">
-              <span className="font-headline italic text-7xl md:text-9xl text-white">The</span>
-              <span className="font-body font-black text-6xl md:text-8xl text-on-primary-container uppercase tracking-tighter">
+            <h1 className="flex flex-wrap justify-center items-baseline gap-x-3 md:gap-x-4">
+              <span className="font-headline italic text-4xl md:text-9xl text-white">The</span>
+              <span className="font-body font-black text-3xl md:text-8xl text-on-primary-container uppercase tracking-tighter">
                 {reading.archetype}
               </span>
-              <span className="font-handwritten text-5xl md:text-7xl text-secondary-container rotate-[-4deg] block w-full md:w-auto">
+              <span className="font-handwritten text-3xl md:text-7xl text-secondary-container rotate-[-4deg] block w-full md:w-auto">
                 Truth
               </span>
-              <span className="font-headline italic text-7xl md:text-9xl text-white">
+              <span className="font-headline italic text-4xl md:text-9xl text-white">
                 of {name}
               </span>
             </h1>
-            <p className="font-handwritten text-3xl md:text-5xl text-white mt-12 rotate-[-2deg] opacity-90">
+            <p className="font-handwritten text-2xl md:text-5xl text-white mt-8 md:mt-12 rotate-[-2deg] opacity-90">
               &ldquo;{reading.hook}&rdquo;
             </p>
           </motion.div>
 
-          <div className="absolute bottom-12 right-12 bg-secondary text-white font-label font-bold px-6 py-3 rounded-full rotate-6 shadow-xl border-2 border-on-surface">
+          <div className="absolute bottom-6 right-6 md:bottom-12 md:right-12 bg-secondary text-white font-label font-bold px-4 py-2 md:px-6 md:py-3 text-xs md:text-base rounded-full rotate-6 shadow-xl border-2 border-on-surface">
             SOUL ARCHETYPE
           </div>
         </section>
@@ -135,7 +135,7 @@ export default function ResultScene({ name, reading, onReset }: ResultSceneProps
 
               {/* Cinematic image break — match Stitch line 129 */}
               <div className="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] my-24 group">
-                <img src={SUNSET_IMG} alt="" className="w-full h-[614px] object-cover" />
+                <img src={SUNSET_IMG} alt="" className="w-full h-[300px] md:h-[614px] object-cover" />
                 <div className="absolute top-1/4 left-10 md:left-1/4 font-handwritten text-4xl md:text-6xl text-white rotate-[-5deg] drop-shadow-lg">
                   this is so you!
                 </div>
@@ -163,7 +163,7 @@ export default function ResultScene({ name, reading, onReset }: ResultSceneProps
             animate={{ opacity: 1 }}
             transition={{ duration: 0.4 }}
           >
-            <h2 className="font-headline italic text-5xl md:text-7xl text-center mb-20 text-on-background">
+            <h2 className="font-headline italic text-4xl md:text-7xl text-center mb-12 md:mb-20 text-on-background">
               Energy Snapshot
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
@@ -205,8 +205,8 @@ export default function ResultScene({ name, reading, onReset }: ResultSceneProps
             transition={{ duration: 0.4 }}
           >
             <div className="max-w-4xl mx-auto text-center relative z-10">
-              <h3 className="font-headline italic text-4xl md:text-6xl mb-12" style={{ textWrap: 'balance' }}>Your number says&hellip;</h3>
-              <p className="font-body text-2xl md:text-4xl leading-relaxed opacity-90">
+              <h3 className="font-headline italic text-3xl md:text-6xl mb-8 md:mb-12" style={{ textWrap: 'balance' }}>Your number says&hellip;</h3>
+              <p className="font-body text-xl md:text-4xl leading-relaxed opacity-90">
                 {reading.numberSays}
               </p>
               <div className="mt-20 flex justify-center gap-8 opacity-20">
@@ -236,7 +236,7 @@ export default function ResultScene({ name, reading, onReset }: ResultSceneProps
           >
             <button
               onClick={handleUnlock}
-              className="group relative bg-on-background text-surface-bright border-4 border-on-surface px-10 py-5 font-body font-black text-xl md:text-2xl uppercase tracking-widest shadow-[8px_8px_0_0_#2E5BFF] hover:shadow-[12px_12px_0_0_#2E5BFF] hover:scale-105 rotate-[-1deg] hover:rotate-0 transition-all active:scale-95 cursor-pointer flex items-center gap-4"
+              className="group relative bg-on-background text-surface-bright border-4 border-on-surface px-6 py-4 md:px-10 md:py-5 font-body font-black text-base md:text-2xl uppercase tracking-wider md:tracking-widest shadow-[8px_8px_0_0_#2E5BFF] hover:shadow-[12px_12px_0_0_#2E5BFF] hover:scale-105 rotate-[-1deg] hover:rotate-0 transition-all active:scale-95 cursor-pointer flex items-center gap-3 md:gap-4"
             >
               <span className="material-symbols-outlined text-3xl group-hover:animate-pulse">lock</span>
               Unlock More About You
@@ -284,13 +284,13 @@ export default function ResultScene({ name, reading, onReset }: ResultSceneProps
             {/* Lucky Colors */}
             {reading.luckyColors.length > 0 && premiumRevealed > reading.premium.length && (
               <motion.div
-                className="mt-12 max-w-5xl mx-auto flex items-center justify-center gap-6 py-8"
+                className="mt-12 max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-center gap-4 md:gap-6 py-8"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.35 }}
               >
                 <span className="font-label font-bold text-sm uppercase tracking-widest text-on-surface/40">Your Colors</span>
-                <div className="flex gap-3">
+                <div className="flex flex-wrap justify-center gap-3">
                   {reading.luckyColors.map((color) => (
                     <span key={color} className="bg-on-background text-surface-bright font-body font-bold px-5 py-2 border-2 border-on-surface shadow-[4px_4px_0_0_#1b1d0e] text-sm uppercase tracking-wide">
                       {color}
