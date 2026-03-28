@@ -1,6 +1,21 @@
-import { useEffect } from 'react'
+import { useEffect, useMemo } from 'react'
 import { motion } from 'framer-motion'
 import { playAmbientPad, playBell } from '../utils/haptics'
+
+const LOADING_TIPS = [
+  'Your North Node is currently dancing with the spirit of the Oracle.',
+  'Every name carries a vibration — yours is being decoded right now.',
+  'Numbers don\u2019t lie. They whisper truths most people never hear.',
+  'The universe assigned you a frequency before you were born.',
+  'Your phone number holds a hidden pattern. We\u2019re reading it.',
+  'Ancient numerologists believed names shape destiny. Let\u2019s find yours.',
+  'Some numbers attract abundance. Others attract chaos. Which are yours?',
+  'Your energy signature is unlike anyone else\u2019s on the planet.',
+  'The cosmos is aligning your reading as we speak.',
+  'Fun fact: Pythagoras believed the universe was built on numbers.',
+  'Your name isn\u2019t random — it\u2019s a cosmic fingerprint.',
+  'We\u2019re cross-referencing your vibration with planetary cycles.',
+]
 
 const CRYSTAL_IMG =
   'https://lh3.googleusercontent.com/aida-public/AB6AXuCPjouBqM_5SKcGPSL1Xk2b8MlhGDO3G1CmmxTAYp0W26BxVzYUYLOhBi7sY4YkN9PCx0jDTIJ0ejNDVP0XzeSkFEHXHp9v9gUjWf2uvdFeZbRL6qRtkiwWzW-QuNIjG63P3C-VcFHE2QkY5xPn4IG074_MRbQ-Nh1xpvs8zigCMgmstIIRTJ-DyKyOhIkBMGdcA-LagpEiM77FFH7GnkHaJaXA7rKr62UEuhOG1bbaEr-96LUYFgGln66ZzrmXuDgV0CUw1tPfi9jO'
@@ -12,6 +27,8 @@ interface LoadingSceneProps {
 }
 
 export default function LoadingScene(_props: LoadingSceneProps) {
+  const tip = useMemo(() => LOADING_TIPS[Math.floor(Math.random() * LOADING_TIPS.length)], [])
+
   useEffect(() => {
     // Single gentle ambient pad — fades in slowly
     const stopPad = playAmbientPad()
@@ -39,7 +56,7 @@ export default function LoadingScene(_props: LoadingSceneProps) {
       </header>
 
       {/* Main Content */}
-      <main className="grow sky-bg flex flex-col items-center justify-between relative px-6 overflow-hidden pt-24 pb-24">
+      <main className="grow sky-bg flex flex-col items-center justify-between relative px-6 overflow-hidden pt-20 pb-32">
         {/* Cloud layer */}
         <div
           className="absolute top-0 left-0 pointer-events-none"
@@ -58,11 +75,11 @@ export default function LoadingScene(_props: LoadingSceneProps) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.6, ease: 'easeOut' }}
         >
-          <div className="relative w-48 h-48 md:w-64 md:h-64 flex items-center justify-center">
+          <div className="relative w-36 h-36 md:w-64 md:h-64 flex items-center justify-center">
             <div className="absolute inset-0 bg-primary opacity-10 blur-[60px] rounded-full" />
 
             <div className="relative animate-pulse floating-crystal rotate-12">
-              <div className="w-40 h-40 md:w-52 md:h-52 rounded-2xl overflow-hidden">
+              <div className="w-32 h-32 md:w-52 md:h-52 rounded-2xl overflow-hidden">
                 <img src={CRYSTAL_IMG} alt="Crystal" className="w-full h-full object-cover scale-[1.3]" />
               </div>
             </div>
@@ -96,7 +113,7 @@ export default function LoadingScene(_props: LoadingSceneProps) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.7, duration: 0.5, ease: 'easeOut' }}
         >
-          <h1 className="font-headline text-4xl md:text-6xl text-on-background italic tracking-tight">
+          <h1 className="font-headline text-3xl md:text-6xl text-on-background italic tracking-tight">
             Preparing your{' '}
             <span className="font-body font-black uppercase text-primary">vision</span>
           </h1>
@@ -112,7 +129,7 @@ export default function LoadingScene(_props: LoadingSceneProps) {
 
         {/* Bottom section — Tooltip (staggers in third) */}
         <motion.div
-          className="relative z-10 backdrop-blur-xl bg-surface/30 border-2 border-on-surface/5 p-5 rounded-xl max-w-sm text-center brutalist-shadow"
+          className="relative z-10 backdrop-blur-xl bg-surface/30 border-2 border-on-surface/5 p-3 rounded-xl max-w-xs text-center brutalist-shadow"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.5, duration: 0.4, ease: 'easeOut' }}
@@ -120,8 +137,8 @@ export default function LoadingScene(_props: LoadingSceneProps) {
           <p className="font-body text-sm font-bold uppercase tracking-widest text-on-surface-variant mb-2">
             Did you know?
           </p>
-          <p className="font-headline text-lg italic leading-snug">
-            Your North Node is currently dancing with the spirit of the Oracle.
+          <p className="font-headline text-sm md:text-lg italic leading-snug">
+            {tip}
           </p>
         </motion.div>
 

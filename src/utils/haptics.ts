@@ -8,6 +8,18 @@ export function vibrate(pattern: number | number[] = 15) {
 // ── Web Audio ──
 let audioCtx: AudioContext | null = null
 let _unlocked = false
+let _muted = false
+
+/** Toggle global mute — returns new muted state */
+export function toggleMute(): boolean {
+  _muted = !_muted
+  return _muted
+}
+
+/** Check if audio is muted */
+export function isMuted(): boolean {
+  return _muted
+}
 
 function ctx(): AudioContext {
   if (!audioCtx) audioCtx = new AudioContext()
@@ -59,6 +71,7 @@ function createReverb(duration = 1.5, decay = 2): ConvolverNode {
 
 /** Warm bell tone — for phase reveals */
 export function playBell(freq = 440, vol = 0.06) {
+  if (_muted) return
   const c = ctx()
   const t = c.currentTime
 
@@ -105,6 +118,7 @@ export function playBell(freq = 440, vol = 0.06) {
 
 /** Gentle tap — button clicks */
 export function playTap() {
+  if (_muted) return
   const c = ctx()
   const t = c.currentTime
 
@@ -127,6 +141,7 @@ export function playTap() {
 
 /** Soft cloud whoosh — scene transitions */
 export function playWhoosh() {
+  if (_muted) return
   const c = ctx()
   const t = c.currentTime
   const len = c.sampleRate * 0.6
@@ -162,6 +177,7 @@ export function playWhoosh() {
 
 /** Rising crystal sparkle — logo reveal */
 export function playSparkle() {
+  if (_muted) return
   const c = ctx()
   const t = c.currentTime
   const notes = [523, 659, 784, 1047] // C5 E5 G5 C6
@@ -196,6 +212,7 @@ export function playSparkle() {
 
 /** Keystroke tick — typing */
 export function playKeystroke() {
+  if (_muted) return
   const c = ctx()
   const t = c.currentTime
 
@@ -217,6 +234,7 @@ export function playKeystroke() {
 
 /** Gentle ambient pad — loading scene, returns stop() */
 export function playAmbientPad(): () => void {
+  if (_muted) return () => {}
   const c = ctx()
   const t = c.currentTime
 
@@ -254,6 +272,7 @@ export function playAmbientPad(): () => void {
 
 /** Deep reveal — results hero */
 export function playRevealGong() {
+  if (_muted) return
   const c = ctx()
   const t = c.currentTime
 

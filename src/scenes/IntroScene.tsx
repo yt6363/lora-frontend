@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react'
 // No auto-play sounds on intro — only tap/click sounds on user interaction
 import { motion, AnimatePresence } from 'framer-motion'
-import { playTap, playWhoosh, unlockAudio } from '../utils/haptics'
+import { playTap, playWhoosh, unlockAudio, toggleMute, isMuted } from '../utils/haptics'
 
 // Background + floating element assets
 const SKY_BG =
@@ -20,6 +20,7 @@ interface IntroSceneProps {
 
 export default function IntroScene({ onComplete }: IntroSceneProps) {
   const [phase, setPhase] = useState<'enter' | 'title' | 'tagline' | 'ready'>('enter')
+  const [muted, setMuted] = useState(isMuted())
   // Visual phases run silently — no auto-play sounds
   useEffect(() => {
     const timers = [
@@ -55,7 +56,7 @@ export default function IntroScene({ onComplete }: IntroSceneProps) {
           {/* Tarot Card — top left */}
           <motion.div
             layout={false}
-            className="absolute top-[8%] left-[3%] w-20 h-32 md:w-40 md:h-64 drop-shadow-2xl rotate-[-8deg]"
+            className="absolute top-[4%] left-[2%] w-16 h-24 md:w-40 md:h-64 drop-shadow-2xl rotate-[-8deg]"
             style={{ willChange: 'transform, opacity' }}
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 0.9, y: 0 }}
@@ -71,7 +72,7 @@ export default function IntroScene({ onComplete }: IntroSceneProps) {
           {/* Floating Star */}
           <motion.div
             layout={false}
-            className="absolute top-[10%] right-[8%] md:top-[20%] md:right-[15%] text-primary"
+            className="absolute top-[5%] right-[5%] md:top-[20%] md:right-[15%] text-primary"
             style={{ willChange: 'transform, opacity', rotate: 12 }}
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 0.8, scale: 1.5 }}
@@ -88,7 +89,7 @@ export default function IntroScene({ onComplete }: IntroSceneProps) {
           {/* Celestial Orb — bottom left */}
           <motion.div
             layout={false}
-            className="absolute bottom-[18%] left-[5%] w-20 h-20 md:bottom-[22%] md:left-[10%] md:w-44 md:h-44 drop-shadow-2xl"
+            className="absolute bottom-[18%] left-[3%] w-16 h-16 md:bottom-[22%] md:left-[10%] md:w-44 md:h-44 drop-shadow-2xl"
             style={{ willChange: 'transform, opacity' }}
             initial={{ opacity: 0, scale: 0.6 }}
             animate={{ opacity: 0.85, scale: 1 }}
@@ -104,7 +105,7 @@ export default function IntroScene({ onComplete }: IntroSceneProps) {
           {/* Healing Quote — bottom right */}
           <motion.div
             layout={false}
-            className="absolute bottom-[18%] right-[3%] w-24 h-24 md:bottom-[14%] md:right-[6%] md:w-44 md:h-44 rotate-[3deg] drop-shadow-2xl"
+            className="absolute bottom-[6%] right-[2%] w-14 h-14 md:bottom-[14%] md:right-[6%] md:w-44 md:h-44 rotate-[3deg] drop-shadow-2xl hidden sm:block"
             style={{ willChange: 'transform, opacity' }}
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 0.9, y: 0 }}
@@ -234,14 +235,15 @@ export default function IntroScene({ onComplete }: IntroSceneProps) {
 
       {/* ── Top-right controls ── */}
       <div className="fixed top-4 right-4 md:top-8 md:right-8 z-30 safe-area-top">
-        <div className="flex items-center gap-2 md:gap-4">
-          <button aria-label="Toggle sound" className="w-10 h-10 md:w-12 md:h-12 bg-white/30 backdrop-blur-md rounded-full flex items-center justify-center border border-white/50 hover:bg-white/50 transition-colors cursor-pointer">
-            <span className="material-symbols-outlined text-on-background text-xl md:text-2xl">volume_up</span>
-          </button>
-          <button aria-label="About LORA" className="w-10 h-10 md:w-12 md:h-12 bg-white/30 backdrop-blur-md rounded-full flex items-center justify-center border border-white/50 hover:bg-white/50 transition-colors cursor-pointer">
-            <span className="material-symbols-outlined text-on-background text-xl md:text-2xl">info</span>
-          </button>
-        </div>
+        <button
+          aria-label="Toggle sound"
+          onClick={() => setMuted(toggleMute())}
+          className="w-10 h-10 md:w-12 md:h-12 bg-white/30 backdrop-blur-md rounded-full flex items-center justify-center border border-white/50 hover:bg-white/50 transition-colors cursor-pointer"
+        >
+          <span className="material-symbols-outlined text-on-background text-xl md:text-2xl">
+            {muted ? 'volume_off' : 'volume_up'}
+          </span>
+        </button>
       </div>
     </div>
   )
