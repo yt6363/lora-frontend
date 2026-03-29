@@ -72,7 +72,7 @@ export default function IntroScene({ onComplete }: IntroSceneProps) {
           {/* Floating Star */}
           <motion.div
             layout={false}
-            className="absolute top-[5%] right-[5%] md:top-[20%] md:right-[15%] text-primary"
+            className="absolute top-[15%] right-[20%] md:top-[20%] md:right-[15%] text-primary"
             style={{ willChange: 'transform, opacity', rotate: 12 }}
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 0.8, scale: 1.5 }}
