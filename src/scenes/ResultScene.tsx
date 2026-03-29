@@ -327,13 +327,8 @@ export default function ResultScene({ name, reading, onReset }: ResultSceneProps
 
         {revealed >= 4 && <LoraFooter fixed={false} />}
 
-        <div className="h-32" />
+        <div className="h-48" />
       </main>
-
-      {/* ─── BOTTOM NAV — decorative bar ─── */}
-      <nav className="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-4 bg-[#f5f5dc] rounded-t-full border-t-4 border-[#1b1d0e] shadow-[0_-8px_0_0_rgba(46,91,255,1)]">
-        <div className="h-8" />
-      </nav>
     </div>
   )
 }

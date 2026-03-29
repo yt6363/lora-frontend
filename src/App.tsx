@@ -168,7 +168,7 @@ function App() {
       {scene === 'intro' && <LoraFooter />}
 
       {/* Dev Navigation Bar */}
-      <div className="fixed bottom-12 left-1/2 -translate-x-1/2 z-[999] flex gap-1 bg-black/80 backdrop-blur-md rounded-full px-2 py-1.5 shadow-2xl border border-white/10">
+      <div className="fixed bottom-12 left-1/2 -translate-x-1/2 z-[999] flex gap-1 bg-black rounded-full px-2 py-1.5 shadow-2xl border border-white/10">
         {SCENES.map((s) => (
           <button
             key={s}
