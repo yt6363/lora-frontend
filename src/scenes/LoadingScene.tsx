@@ -56,10 +56,10 @@ export default function LoadingScene(_props: LoadingSceneProps) {
       </header>
 
       {/* Main Content */}
-      <main className="grow sky-bg flex flex-col items-center justify-between relative px-6 overflow-hidden pt-20 pb-32">
+      <main className="grow sky-bg flex flex-col items-center justify-between relative px-6 overflow-x-hidden pt-20 pb-32">
         {/* Cloud layer */}
         <div
-          className="absolute top-0 left-0 pointer-events-none"
+          className="absolute top-0 left-0 pointer-events-none overflow-hidden"
           style={{
             width: '200%',
             height: '100%',
