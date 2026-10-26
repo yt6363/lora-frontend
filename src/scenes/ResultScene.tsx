@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import LoraFooter from '../components/LoraFooter'
+import Typed from '../components/Typed'
 import { playRevealGong, playSectionReveal, playTap } from '../utils/haptics'
 
 const CRYSTAL_CLUSTER = 'https://lh3.googleusercontent.com/aida-public/AB6AXuDbMjOkLYgdw3SjB0JDP5zYns2ep9izR5jdKiktbOfu5aJC8D7vaxjKko2a0TzTxLktRPcXuH3Luzu4RCoXySdcM1fw7MD1sIwpYmKHJ2PUSIMZoGZz3wKbu642ELwmbHFe_-Wpedg3ZpwG5jITI-gN5nz1970_iTW6ZlkyhXIsOjA_6j7TrBCdf7ROlFVVlQckz4R9Oy-Kge0bmR7p8G8OKG9rDrhKbGuh7Ku_tIEzG-xYqr-JGovjejXQ-LTLVGF5gyHGsvHrQwSE'
@@ -110,7 +111,7 @@ export default function ResultScene({ name, reading, complete, onReset }: Result
               </span>
             </h1>
             <p className="font-handwritten text-2xl md:text-5xl text-white mt-8 md:mt-12 rotate-[-2deg] opacity-90">
-              &ldquo;{reading.hook}&rdquo;
+              &ldquo;<Typed text={reading.hook ?? ''} />&rdquo;
             </p>
           </motion.div>
 
@@ -128,11 +129,11 @@ export default function ResultScene({ name, reading, complete, onReset }: Result
             transition={{ duration: 0.4 }}
           >
             <div className="font-headline italic text-2xl md:text-5xl text-primary leading-tight" style={{ textWrap: 'balance' }}>
-              {reading.lead}
+              <Typed text={reading.lead ?? ''} />
             </div>
 
             <div className="space-y-8 md:space-y-12 text-lg md:text-2xl font-body leading-relaxed text-on-surface/80">
-              {reading.body1 && <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>{reading.body1}</motion.p>}
+              {reading.body1 && <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}><Typed text={reading.body1} /></motion.p>}
 
               {/* Cinematic image break — match Stitch line 129 */}
               <div className="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] my-24 group">
@@ -150,8 +151,8 @@ export default function ResultScene({ name, reading, complete, onReset }: Result
                 </div>
               </div>
 
-              {reading.body2 && <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>{reading.body2}</motion.p>}
-              {reading.body3 && <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>{reading.body3}</motion.p>}
+              {reading.body2 && <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}><Typed text={reading.body2} /></motion.p>}
+              {reading.body3 && <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}><Typed text={reading.body3} /></motion.p>}
             </div>
           </motion.section>
         )}
@@ -188,7 +189,7 @@ export default function ResultScene({ name, reading, complete, onReset }: Result
                     <p
                       className={`font-body text-base md:text-lg leading-snug ${isMiddle ? 'text-on-secondary-container' : ''}`}
                     >
-                      {desc}
+                      <Typed text={desc} />
                     </p>
                   </div>
                 )
@@ -208,7 +209,7 @@ export default function ResultScene({ name, reading, complete, onReset }: Result
             <div className="max-w-4xl mx-auto text-center relative z-10">
               <h3 className="font-headline italic text-3xl md:text-6xl mb-8 md:mb-12" style={{ textWrap: 'balance' }}>Your number says&hellip;</h3>
               <p className="font-body text-xl md:text-4xl leading-relaxed opacity-90">
-                {reading.numberSays}
+                <Typed text={reading.numberSays ?? ''} />
               </p>
               <div className="mt-12 md:mt-20 flex justify-center gap-4 md:gap-8 opacity-20">
                 <span className="material-symbols-outlined text-6xl md:text-9xl">lock_open</span>
@@ -253,7 +254,7 @@ export default function ResultScene({ name, reading, complete, onReset }: Result
                       {title}
                     </span>
                     <p className={`font-body text-lg leading-relaxed ${i % CARD_BG.length === 3 ? 'text-on-secondary-container' : ''}`}>
-                      {text}
+                      <Typed text={text} />
                     </p>
                   </motion.div>
                 )

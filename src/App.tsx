@@ -68,8 +68,9 @@ function App() {
     transitionTo('input')
   }, [transitionTo])
 
-  // The reading streams in as NDJSON events, one per field. The results page
-  // opens as soon as the hero and lead are ready; the rest fills in below.
+  // The reading streams in as NDJSON events: "partial" carries a paragraph so
+  // far, "field" its final text. The results page opens once the archetype is
+  // in and the hook has started; everything else types itself out below.
   const handleSubmit = useCallback(async (data: { name: string; phone: string }) => {
     const run = ++readingRun.current
     setUserName(data.name)
@@ -83,7 +84,7 @@ function App() {
       if (run !== readingRun.current) return
       reading = { ...reading, ...patch }
       setReadingResult(reading)
-      if (!opened && reading.archetype && reading.hook && reading.lead) {
+      if (!opened && reading.archetype && reading.hook) {
         opened = true
         transitionTo('results')
       }
@@ -110,7 +111,7 @@ function App() {
           if (!line.trim()) continue
           const event = JSON.parse(line)
           if (event.type === 'colors') update({ luckyColors: event.luckyColors })
-          else if (event.type === 'field') update({ [event.key]: event.value })
+          else if (event.type === 'field' || event.type === 'partial') update({ [event.key]: event.value })
           else if (event.type === 'error') throw new Error(event.message)
           else if (event.type === 'done') finished = true
         }
