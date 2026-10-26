@@ -8,7 +8,6 @@ const SUNSET_IMG = 'https://lh3.googleusercontent.com/aida-public/AB6AXuAkPAwrtI
 const MOON_IMG = 'https://lh3.googleusercontent.com/aida-public/AB6AXuDGFDSEdY6plVXNN0G21DSQ481OgEkz6al5814l9QEI_IH045JksWD05mGIC6hVIzsuaAF1DZAiEh8nHnQwL2lXfSiILvvtIDzyCALaSend7VtLfJ1xma85sQunCXso5pHJcjOyKSevIrpC-d0k5eEY-JHp0w2C7AI0fHLjgdFAQxSaAFi3s3vk_NRJOGFh9Lu-YXlqHJu7cH8ALqHYDnkj4bMB4d_VwfFNT3-h0vV-6M5rS3ieDjBvoyOTR_WR02Xnu0GlIqYUtx_4'
 
 interface Reading {
-  governing_planet: string
   archetype: string
   hook: string
   lead: string
@@ -19,7 +18,6 @@ interface Reading {
   numberSays: string
   premium: [string, string][]
   luckyColors: string[]
-  raw?: Record<string, unknown>
 }
 
 interface ResultSceneProps {

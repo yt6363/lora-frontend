@@ -14,7 +14,7 @@ const LOADING_TIPS = [
   'The cosmos is aligning your reading as we speak.',
   'Fun fact: Pythagoras believed the universe was built on numbers.',
   'Your name isn\u2019t random — it\u2019s a cosmic fingerprint.',
-  'We\u2019re cross-referencing your vibration with planetary cycles.',
+  'We\u2019re cross-referencing your name with the rhythm of your number.',
 ]
 
 const CRYSTAL_IMG =

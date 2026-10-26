@@ -120,10 +120,10 @@ export default function InputScene({ onSubmit }: InputSceneProps) {
                     style={{ willChange: 'transform, opacity' }}
                   >
                     <span className="font-handwritten text-white text-3xl md:text-7xl block rotate-[-3deg] -mb-2 md:-mb-4 tracking-wider">
-                      what's
+                      what do people
                     </span>
                     <h1 className="font-headline italic text-white text-5xl md:text-9xl font-bold tracking-tighter leading-none">
-                      your name?
+                      call you?
                     </h1>
                   </motion.div>
 
@@ -142,8 +142,8 @@ export default function InputScene({ onSubmit }: InputSceneProps) {
                       </div>
                       <input
                         type="text"
-                        name="fullName"
-                        autoComplete="name"
+                        name="givenName"
+                        autoComplete="given-name"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         onKeyDown={(e) => handleKeyDown(e, handleNameSubmit)}

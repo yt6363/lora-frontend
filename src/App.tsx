@@ -11,7 +11,6 @@ import './index.css'
 type Scene = 'intro' | 'input' | 'loading' | 'results'
 
 interface ReadingResult {
-  governing_planet: string
   archetype: string
   hook: string
   lead: string
@@ -22,10 +21,6 @@ interface ReadingResult {
   numberSays: string
   premium: [string, string][]
   luckyColors: string[]
-  raw: {
-    name_analysis: Record<string, unknown>
-    phone_analysis: Record<string, unknown>
-  }
 }
 
 const SCENES: Scene[] = ['intro', 'input', 'loading', 'results']
