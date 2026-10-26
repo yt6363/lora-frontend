@@ -22,7 +22,8 @@ interface Reading {
 
 interface ResultSceneProps {
   name: string
-  reading: Reading
+  reading: Partial<Reading>
+  complete: boolean
   onReset: () => void
 }
 
@@ -30,33 +31,34 @@ const ROTATIONS = ['rotate-[-1deg]', 'rotate-[1.5deg]', 'rotate-[0.5deg]', 'rota
 const CARD_BG = ['bg-surface', 'bg-primary-container', 'bg-surface', 'bg-secondary-container', 'bg-surface']
 const CARD_TEXT = ['text-primary', 'text-on-primary-container', 'text-primary', 'text-white', 'text-primary']
 
-export default function ResultScene({ name, reading, onReset }: ResultSceneProps) {
+export default function ResultScene({ name, reading, complete, onReset }: ResultSceneProps) {
   const [revealed, setRevealed] = useState(0)
-  const [unlocked, setUnlocked] = useState(false)
   const [premiumRevealed, setPremiumRevealed] = useState(0)
 
-  useEffect(() => {
-    // Gong on hero reveal
-    playRevealGong()
+  // Gong on hero reveal
+  useEffect(() => { playRevealGong() }, [])
 
-    const timer = setInterval(() => {
-      setRevealed((r) => {
-        if (r >= 5) { clearInterval(timer); return 5 }
-        const next = r + 1
-        playSectionReveal(next)
-        return next
-      })
+  // The reading streams in, so each section waits for its own text as well as
+  // the 400ms rhythm. Sections 4 and 5 are pacing beats before Deeper Truths.
+  const ready = [true, !!reading.lead, !!reading.energies, !!reading.numberSays, !!reading.numberSays, complete]
+  const nextReady = revealed < 5 && ready[revealed + 1]
+  useEffect(() => {
+    if (!nextReady) return
+    const t = setTimeout(() => {
+      playSectionReveal(revealed + 1)
+      setRevealed(revealed + 1)
     }, 400)
-    return () => clearInterval(timer)
-  }, [])
+    return () => clearTimeout(t)
+  }, [revealed, nextReady])
 
   // total items = insight cards + 1 for colors
-  const totalPremiumItems = reading.premium.length + (reading.luckyColors.length > 0 ? 1 : 0)
+  const premium = reading.premium ?? []
+  const luckyColors = reading.luckyColors ?? []
+  const totalPremiumItems = premium.length + (luckyColors.length > 0 ? 1 : 0)
 
-  const handleUnlock = () => {
-    if (unlocked) return
-    playTap()
-    setUnlocked(true)
+  // Deeper truths follow straight on from the main reading
+  useEffect(() => {
+    if (revealed < 5) return
     let count = 0
     const timer = setInterval(() => {
       count++
@@ -64,7 +66,8 @@ export default function ResultScene({ name, reading, onReset }: ResultSceneProps
       playSectionReveal(count)
       setPremiumRevealed(count)
     }, 350)
-  }
+    return () => clearInterval(timer)
+  }, [revealed, totalPremiumItems])
 
   return (
     <div className="min-h-screen bg-surface font-body text-on-surface selection:bg-primary-container selection:text-on-primary-container">
@@ -129,7 +132,7 @@ export default function ResultScene({ name, reading, onReset }: ResultSceneProps
             </div>
 
             <div className="space-y-8 md:space-y-12 text-lg md:text-2xl font-body leading-relaxed text-on-surface/80">
-              <p>{reading.body1}</p>
+              {reading.body1 && <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>{reading.body1}</motion.p>}
 
               {/* Cinematic image break — match Stitch line 129 */}
               <div className="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] my-24 group">
@@ -147,8 +150,8 @@ export default function ResultScene({ name, reading, onReset }: ResultSceneProps
                 </div>
               </div>
 
-              <p>{reading.body2}</p>
-              <p>{reading.body3}</p>
+              {reading.body2 && <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>{reading.body2}</motion.p>}
+              {reading.body3 && <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>{reading.body3}</motion.p>}
             </div>
           </motion.section>
         )}
@@ -165,7 +168,7 @@ export default function ResultScene({ name, reading, onReset }: ResultSceneProps
               Energy Snapshot
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
-              {reading.energies.map(([title, desc], i) => {
+              {(reading.energies ?? []).map(([title, desc], i) => {
                 const isMiddle = i === 1
                 const rotation = i === 0
                   ? 'rotate-[-1deg]'
@@ -224,30 +227,8 @@ export default function ResultScene({ name, reading, onReset }: ResultSceneProps
           </motion.section>
         )}
 
-        {/* ─── UNLOCK GATE ─── */}
-        {revealed >= 4 && !unlocked && (
-          <motion.section
-            className="py-20 px-6 flex flex-col items-center justify-center bg-surface"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.4 }}
-          >
-            <button
-              onClick={handleUnlock}
-              className="group relative bg-on-background text-surface-bright border-4 border-on-surface px-6 py-4 md:px-10 md:py-5 font-body font-black text-base md:text-2xl uppercase tracking-wider md:tracking-widest shadow-[8px_8px_0_0_#2E5BFF] hover:shadow-[12px_12px_0_0_#2E5BFF] hover:scale-105 rotate-[-1deg] hover:rotate-0 transition-all active:scale-95 cursor-pointer flex items-center gap-3 md:gap-4"
-            >
-              <span className="material-symbols-outlined text-3xl group-hover:animate-pulse">lock</span>
-              Unlock More About You
-              <span className="material-symbols-outlined text-3xl group-hover:animate-pulse">lock</span>
-            </button>
-            <p className="mt-6 font-handwritten text-2xl text-on-surface/50 rotate-[-2deg]">
-              there&rsquo;s so much more to see&hellip;
-            </p>
-          </motion.section>
-        )}
-
         {/* ─── PREMIUM CONTENT ─── */}
-        {unlocked && premiumRevealed >= 1 && (
+        {premiumRevealed >= 1 && (
           <motion.section
             className="py-16 px-4 md:py-24 md:px-6 bg-surface-container-low"
             initial={{ opacity: 0 }}
@@ -258,7 +239,7 @@ export default function ResultScene({ name, reading, onReset }: ResultSceneProps
               Deeper Truths
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-5xl mx-auto">
-              {reading.premium.map(([title, text], i) => {
+              {premium.map(([title, text], i) => {
                 if (premiumRevealed < i + 1) return null
                 return (
                   <motion.div
@@ -280,7 +261,7 @@ export default function ResultScene({ name, reading, onReset }: ResultSceneProps
             </div>
 
             {/* Lucky Colors */}
-            {reading.luckyColors.length > 0 && premiumRevealed > reading.premium.length && (
+            {luckyColors.length > 0 && premiumRevealed > premium.length && (
               <motion.div
                 className="mt-12 max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-center gap-4 md:gap-6 py-8"
                 initial={{ opacity: 0, y: 20 }}
@@ -289,7 +270,7 @@ export default function ResultScene({ name, reading, onReset }: ResultSceneProps
               >
                 <span className="font-label font-bold text-sm uppercase tracking-widest text-on-surface/40">Your Colors</span>
                 <div className="flex flex-wrap justify-center gap-3">
-                  {reading.luckyColors.map((color) => (
+                  {luckyColors.map((color) => (
                     <span key={color} className="bg-on-background text-surface-bright font-body font-bold px-5 py-2 border-2 border-on-surface shadow-[4px_4px_0_0_#1b1d0e] text-sm uppercase tracking-wide">
                       {color}
                     </span>
@@ -301,7 +282,7 @@ export default function ResultScene({ name, reading, onReset }: ResultSceneProps
         )}
 
         {/* ─── CTA ─── */}
-        {revealed >= 4 && (unlocked ? premiumRevealed >= totalPremiumItems : true) && (
+        {revealed >= 5 && premiumRevealed >= totalPremiumItems && (
           <section className="py-32 px-6 flex flex-col items-center justify-center bg-surface">
             <div className="relative group cursor-pointer">
               <div className="absolute -inset-4 bg-primary-container rounded-full blur-2xl opacity-20 group-hover:opacity-40 transition-opacity" />

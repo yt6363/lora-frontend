@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from 'react'
+import { useState, useCallback, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import IntroScene from './scenes/IntroScene'
 import InputScene from './scenes/InputScene'
@@ -29,7 +29,9 @@ function App() {
   const [scene, setScene] = useState<Scene>('intro')
   const [transitioning, setTransitioning] = useState(false)
   const [userName, setUserName] = useState('')
-  const [readingResult, setReadingResult] = useState<ReadingResult | null>(null)
+  const [readingResult, setReadingResult] = useState<Partial<ReadingResult> | null>(null)
+  const [readingDone, setReadingDone] = useState(false)
+  const readingRun = useRef(0)
   const [cloudFaded, setCloudFaded] = useState(false)
 
   // Unlock audio on first user interaction anywhere
@@ -66,35 +68,79 @@ function App() {
     transitionTo('input')
   }, [transitionTo])
 
+  // The reading streams in as NDJSON events, one per field. The results page
+  // opens as soon as the hero and lead are ready; the rest fills in below.
   const handleSubmit = useCallback(async (data: { name: string; phone: string }) => {
+    const run = ++readingRun.current
     setUserName(data.name)
     setReadingResult(null)
+    setReadingDone(false)
     transitionTo('loading')
 
+    let reading: Partial<ReadingResult> = {}
+    let opened = false
+    const update = (patch: Partial<ReadingResult>) => {
+      if (run !== readingRun.current) return
+      reading = { ...reading, ...patch }
+      setReadingResult(reading)
+      if (!opened && reading.archetype && reading.hook && reading.lead) {
+        opened = true
+        transitionTo('results')
+      }
+    }
+
     try {
-      const reading: ReadingResult = await fetch('/api/analyze/reading', {
+      const res = await fetch('/api/analyze/reading/stream', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name: data.name, phone: data.phone }),
-      }).then((r) => {
-        if (!r.ok) throw new Error(`Server error: ${r.status}`)
-        return r.json()
       })
+      if (!res.ok || !res.body) throw new Error(`Server error: ${res.status}`)
 
-      setReadingResult(reading)
-      transitionTo('results')
+      const reader = res.body.getReader()
+      const decoder = new TextDecoder()
+      let buf = ''
+      let finished = false
+      while (!finished) {
+        const { value, done } = await reader.read()
+        buf += decoder.decode(value, { stream: !done })
+        const lines = buf.split('\n')
+        buf = lines.pop() ?? ''
+        for (const line of lines) {
+          if (!line.trim()) continue
+          const event = JSON.parse(line)
+          if (event.type === 'colors') update({ luckyColors: event.luckyColors })
+          else if (event.type === 'field') update({ [event.key]: event.value })
+          else if (event.type === 'error') throw new Error(event.message)
+          else if (event.type === 'done') finished = true
+        }
+        if (done) break
+      }
+      if (!finished) throw new Error('Reading stream ended early')
     } catch (err) {
       console.error('Analysis failed:', err)
-      alert('Could not reach the analysis server. Make sure the backend is running on port 8000.')
-      transitionTo('input')
+      if (run !== readingRun.current) return
+      // Once the page is open, keep what arrived rather than throwing it away
+      if (!opened) {
+        alert('We could not finish your reading. Please try again.')
+        transitionTo('input')
+        return
+      }
+    }
+    if (run === readingRun.current) {
+      // Fill gaps so a stream that stopped early still renders cleanly
+      update({ body1: '', body2: '', body3: '', energies: [], numberSays: '', premium: [], luckyColors: [], ...reading })
+      setReadingDone(true)
     }
   }, [transitionTo])
 
   const handleReset = useCallback(() => {
     transitionTo('intro')
+    readingRun.current++
     setTimeout(() => {
       setUserName('')
       setReadingResult(null)
+      setReadingDone(false)
     }, 600)
   }, [transitionTo])
 
@@ -109,6 +155,7 @@ function App() {
         <ResultScene
           name={userName}
           reading={readingResult}
+          complete={readingDone}
           onReset={handleReset}
         />
       )}
